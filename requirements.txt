@@ -1,0 +1,7 @@
+Package          Version
+---------------- -------
+attrs            25.3.0
+hypothesis       6.131.9
+pip              25.0.1
+scapy            2.6.1
+sortedcontainers 2.4.0
