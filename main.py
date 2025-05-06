@@ -3,6 +3,7 @@ from pandas import DataFrame, MultiIndex
 import threading
 import netfilterqueqe
 import sys 
+import sqlite3 
 import logging
 import functools
 import scapy.all as cap
@@ -15,23 +16,26 @@ import string
 logging.basicConfig(
     level=logging.DEBUG,
     format='(%(Appname)s %(threadName)-10s) %(message)s',
-    filename="tacticalapp.log"
+    filename="sycllapp.log"
 );
 
 e = threading.Event();
 
-
 q = netfilterqueqe.NetfilterQueqe()
 
-localaddress = ()
+server_local_address = ()
 
 string_list_of_internet_services = [ ]
 
+map_of_known_hosts_db = 
+
 class Index():
     def __init__(self,*args):
-        self.index = pd.MultiIndex.from_product([[string_list_of_internet_services.filter()],[args.get['ipv4'],args.get['ipv6'], args.get['domain_name']]], names = ['port services', 'hostname']) 
+        self.index = pd.MultiIndex.from_product([[string_list_of_internet_services.filter()],
+        [args.get['host_ipv4_address'],args.get['host_ipv6_address'], args.get['domain_name']]], 
+        names = ['port services', 'hostname']) 
         self.data = [ ]
-        self.domain = ( data , index=index, columns=[])
+        self.DataFrame = ( self.data , index=self.index, columns=[])
 
 
 class Intel():
@@ -41,19 +45,20 @@ class Intel():
             self.packet_origin_address = []
             return Index()
 
-intel = Intel
+
+intel = Intel()
 
 def user_input_target(self, *args):
-   destination = self.destination
+   target = 
     if args.get == ['target*']:
-            .append(args.get['target']) 
+            target.append(args.get['target']) 
         return destination
     else:
         return 0 
     ...
 
 def user_input_origin( *args):
-    origin = intel.packet_original_address 
+    origin = 
     if args.get == ['origin*']: 
     ...
 
