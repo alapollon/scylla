@@ -4,6 +4,7 @@ import threading
 import netfilterqueqe
 import sys 
 import logging
+import functools
 import scapy.all as cap
 import socketserver as ss
 import asyncio as sync 
@@ -24,26 +25,36 @@ q = netfilterqueqe.NetfilterQueqe()
 
 localaddress = ()
 
-class Address():
-    def __init__(self, address):
-        self.targets = MultiIndex.f
+string_list_of_internet_services = [ ]
 
+class Index():
+    def __init__(self,*args):
+        self.index = pd.MultiIndex.from_product([[string_list_of_internet_services.filter()],[args.get['ipv4'],args.get['ipv6'], args.get['domain_name']]], names = ['port services', 'hostname']) 
+        self.data = [ ]
+        self.domain = ( data , index=index, columns=[])
+
+
+class Intel():
+    def __init__(self):
+        super()__new__(self):
+            self.target_host_data = []
+            self.packet_origin_address = []
+            return Index()
+
+intel = Intel
 
 def user_input_target(self, *args):
    destination = self.destination
     if args.get == ['target*']:
-        for i in args:
-            destination.append(args.get['target']) 
+            .append(args.get['target']) 
         return destination
     else:
         return 0 
     ...
 
-def user_input_origin(self, *args):
-    origin = self.origin
+def user_input_origin( *args):
+    origin = intel.packet_original_address 
     if args.get == ['origin*']: 
-        
-
     ...
 
 target_by_user = user_input_target
@@ -68,7 +79,7 @@ def establish_link_with_target(target):
     ...
 
 
- def spoofing_process(packet):
+ def spoof(packet):
     packet = cap.IP(packet.get_payload())
     while packet.haslayer(cap.DNSRR):
         qname = packet[cap.DNSQR].qname 
@@ -91,7 +102,7 @@ e= threading.Event()
 scan_input_thread = threading.Thread(
     name=' scanning user input %()s'
     target = scan_prompt_data,
-    args=()
+    args=(e,)
 )
 
 process_spoof_thread = threading.Thread(
@@ -99,11 +110,19 @@ process_spoof_thread = threading.Thread(
     target= process,
     args=(e,),
 )
-
+process = ( spoof, establish_link_with_target,  )
 def main():
-  parser.add_arguemnt('end', action=, default=false);
-  parser.add_arguemnt('spoof',action=,default=false);
-  queue = q.bind(0, process)
+  parser.add_arguemnt('end', action=, default=False);
+  parser.add_arguemnt('start', action=, default=True);
+  parser.addd_arguement('get', action=, default=False);
+  parser.add_arguemnt('--spoof',action=,default=False);
+  parser.add_arguement('--connect',action=,default=False);
+  while :
+    if :
+        queue = q.bind(0, )
+    elif :
+    
+    elif :
 
 if __name__ is __main__:
     main()
