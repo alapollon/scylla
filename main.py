@@ -2,6 +2,7 @@
 from sqlalchemy import create_engine, Column, Integer, String, MetaData, Table, Select
 from sqlalchemy.orm import declarative_base, sessionmaker, session
 from pandas import DataFrame, MultiIndex, Series
+import ssl 
 import numpy
 import threading
 import netfilterqueqe
@@ -30,19 +31,25 @@ local_server_local_address=
 
 string_list_of_internet_services= 
 
+Base = declarative_base
+localsql = sqlite3
 
 
 class Datawarehouse(abc):
     def __init__(self, *args):
         self.addresses=
         self.credentials=
+        self.my_client_certificates= 
         __db_address_data= DataFrame()
         __local_credentials_data= DataFrame()
         __gateway_index_map=
 
-        
+class LocalDataBase:
+        def __init__(self):
+            self.db = localsql
 
-class RemoteDB(Datawarehouse):
+
+class RemoteDatabase(Datawarehouse):
     def __init__(self):
         self.engine = create_engine(f"sqlite:///{}")
         self.Session = sessionmaker(binsd=self.engine)
@@ -149,7 +156,6 @@ class FrameworkData(IndividualFactorDistribution, MultiFactorDistribution, Produ
         super()__new__(edge, node):
             self.target_host_data= []
             self.packet_origin_address_data= []
-            ret
 
    async def _select_data(): 
         ...
