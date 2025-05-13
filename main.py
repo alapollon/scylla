@@ -1,12 +1,15 @@
 #
-from sqlalchemy import create_engine, Column, Integer, String, MetaData, Table, Select
-from sqlalchemy.orm import declarative_base, sessionmaker, session
+from os import path
+from sqlalchemy import create_engine, Column, Integer, String, MetaData, Table, Select, ForeignKey
+from sqlalchemy.orm import  declarative_base, registry, sessionmaker, session, mapped_column, mapped, relationship
+from sqlalchemy.orm.decl_api import DeclarativeMeta 
 from pandas import DataFrame, MultiIndex, Series
 import ssl 
-import numpy
+import numpy as npy 
 import threading
 import netfilterqueqe
 import sys 
+import atexit
 import sqlite3 
 import logging
 import functools
@@ -15,153 +18,243 @@ import socketserver as ss
 import asyncio as sync 
 import argparse
 import string
-
+import ip 
 
 logging.basicConfig(
     level=logging.DEBUG,
     format='(%(Appname)s %(threadName)-10s) %(message)s',
-    filename="sycllapp.log"
+    filename="sycllanetwork.log"
 );
 
-e = threading.Event()
+PATH = (
+    Volumes= 'volumes/*',
+    Interface= '/dev/d*',
+    Cache= '/tmp',
+    ServerKeys= '~/.ssh/*',
+    Log= '/var/log/scylla/*')
 
-que = netfilterqueqe.NetfilterQueqe()
-
-local_server_local_address= 
-
-string_list_of_internet_services= 
-
-Base = declarative_base
-localsql = sqlite3
-
-
-class Datawarehouse(abc):
-    def __init__(self, *args):
-        self.addresses=
-        self.credentials=
-        self.my_client_certificates= 
-        __db_address_data= DataFrame()
-        __local_credentials_data= DataFrame()
-        __gateway_index_map=
-
-class LocalDataBase:
-        def __init__(self):
-            self.db = localsql
-
-
-class RemoteDatabase(Datawarehouse):
+async def symbol():
     def __init__(self):
-        self.engine = create_engine(f"sqlite:///{}")
-        self.Session = sessionmaker(binsd=self.engine)
-        self.metadata = MetaData(bind=self.engine)
+        with PATH as path
+            for i in path:
+                os.path.add_arguemnt(i)
+        
+    class Pipe: 
+        def __slot__():
+    ...
 
-    def _selection_map_of_routes(self):
+t = threading.Event()
+que = netfilterqueqe.NetfilterQueqe()
+local_server_local_address= 
+Base= declarative_base
+base_registry= registry()
+relate= base_registry.generate_base()
+sql = sqlite3
+register = atexit.register()
+array = npy.array()
 
-        ...
-    
-    def _selection_map_of_service_history(self):
-        ...
 
 
-    def _initialize_database(self):
+class Dataware(Base):
+    @classmethod
+    def __init__(self, *args ):
+        self.acc= Dataframe("database":[] "username":[],"password":[])
+        self.engine= create_engine
+        self.con= sessionmaker(binsd=self.engine)
+        self.meta= MetaData(bind=self.engine)
+        super().__init__(Base)
+        @mapper_registry.as_declarative_base()
+    class Stack: 
+        @declared_attr
+        def __init__():
+            self.schema = base_registry.map_imperatively()
+            self.primary_key= 
+        @declarative_base
+        class Main_Remote_Gateway_Scheme:
+            __tablename__= "main_gateway__scheme"
+            mapid= Column(Integer, nullable= True)
+            gatewayCIDRcidr= Column(Binary(1) primary_key=True, nullable=False) 
+            hostname = Column(String, primary_key=False , nullable= True )
+            gatewayipv4=Column(Binary(4), primary_key=True, nullable=False)
+            gatewayipv6= Column(Binary(16), unique= True, primary_key=True, nullable=False)
+            bgp= Column()
+            update= Column(Timestamp(), nullable=False)
+        _main_gateway_schema= Main_Remote_Gateway_Scheme
+        @declarative_base
+        class Node_Edge_Scheme:
+            __tablename__= "node_edge_scheme"
+            cidr=Column(Binary(2), foreign_key=True, nullable=False)
+            port=Column(Binary(3), nullable=True)
+            gatewayipv6= Column(Binary(16), foreign_key_key=True, nullable= False)
+            hostipv4= Column(Binary(4), nullable= True)
+            hostipv6= Column(Binary(16), foreign_key=True,  nullable = False )
+            mac=Column(Binary())
+        _edge_schema= Node_Port_Map_Scheme
 
-        class RemoteRouteIndex:
+        @declarative_base
+        @base_registry.mapped
+        class Port_Services_Relationship:
+                __tablename__= "service_map_relationship"
+                services=Column()
+                boolean=Column()
+                hostipv6=Column()
+        @declarative_base
+        class Kansas_Cinncinati__Schema:
+            __tablename__="kansas_cincinnati__scheme"
+            gatewayipv6=Column(Binary(16), foreign_key=True, nullable=False )
+            gatewayCIDR=Column(Binary(), foreign_key=True, nullable=False  )
+            nodeipv6=Column(Binary(), foreign_key=True, nullable=False )
+            nodeCIDR=Column(Binary(), nullable=True )
+            mac=Column(Binary(), foreign_key_key=True, nullable=True)
+            hops=Column(Binary(), foreign_key=True, nullable=False)
+        _kill_chain_schema= Kansas_Cinncinati_Schema
+        @declarative_base
+        class Route_Table_Schema:
+            __tablename__="route_schemes"
+            update=Column(Timestamp(), nullable=False )
+            gatewayipv6=Column(Binary(), primary_key=True, nullable=False)
+            subhostipv6=Column(Binary(), primary_key=True, nullable=False )
+            hostname=Column(String(), primary_key+True, nullable=True )
+            mac=Column(Binary(), primary_key=True, nullable=False)
+            hops=Column(Binary(), primary_key=True, nullable=False)
+        _main_route_schema= Route_Table_Schema
+        @declarative_base
+        class Database_Table_Schema:
+            __tablename__="database_routes_schema"
+            hostipv6=Column()
+            sub=Column()
+            hostname=Column()
+            fitness=Column()
+            masks=Column()
+            update=Column()
+        _database_table_schema= Database_Table_Schema
+        self.schema(_main_gateway__scheme, _node_eddge_schema, _kill_chain_schema, _main_route_schema, _database_table_schema)
+        stack=Stack()
+    class Private:
+        @classmethod 
+        def __prepare__(Base, dom= stack.schema(), ):
 
-        RemoteRoutes()
+    @abstractclass
+    class Method(Private, Base):
+        @staticmethod
+        async def search(**kwargs);
+            await keep = con.execute.select([i for i in args.get["column "]]) 
+            table = Series()
+            return DataFrame()
+            
+            ...
 
-        class RemoteEdgeIndex:
+        @staticmethod
+        def _initialize_database_schema(self):
+            conn = self.engine.connection()
+            mapping 
+            def _create_interelational_map():
+                tables=Table(
+                    "interelationship_datatable", 
+                    Column("url", Binary(16), primary_key= True),
+                    Column("table", Binary(16), primary_key= True)
+                )
 
-        RemoteEdgeIndex()
+                with conn.execute as exe:
+                    if :
+
+db = Dataware
+class LocalDataBase(db):
+    def __init__(self, *args)
+        super().__prepare__(acc, engine, con)
+        if con():
+            return 0 
+            continue 
+        elif: 
+            try: 
+                engine(f'sqllite:///{*args.get['']}') 
+            except : 
+            
+          
+    class Method:
+
+
+    class Stack:
+
+class RemoteDatabase(db):
+    @classmethod
+    def __new__(self):
+        super()__prepare__()
         if :
             metadata.create_all(self.engine)
+            return super().__prepare__(Datawarehouse)
         elif : 
 
         else : 
 
+    class Method:
 
-class UserDatabase(RemoteDB):
-    def __init__(self,):
-        super().__init__()
-
-
-    def when_remote_is_not():
-        self._initialize_database()
-
+    class Stack:
     
-    def _create_local_product_routing_table(self):
-        class LocalRoutes(Base):
-            __route_tablename__ = "local_routing_table"
-            mapid = Column(Integer, nullable=True)
-            hostname = Column(String, primary_key=False )
-            gatewayipv4=Column(Binary(16), primary_key=True, nullable=False)
-            gatewayipv6= Column(Binary(4), primary_key=True, nullable=False)
-            host_ipv4_address = Column(Binary(4), nullable=True)
-            host_ipv6_address = Column(Binary(16), primary_key=True, unique=True, nullable=False)
-            host_mac_address = Column(String, unique=True, nullable=True)
-        LocalRoutes()
-            
-     def _create_local_product_port_services_table(self):
-        class LocalPortMapping(Base):
-            __port_tablename__ = "local_port_table"
-            mapid = Column(Interger, nullable=True)
-            services=Column(String, primary_key=True, nullable=True )
-            hostname=Column(String, nullable=True)
-            host_ipv4_address= Column(Binary(4))
-            host_ipv6_address= Column(Binary(16))
-        LocalPortMapping()
+class UserDatabase(abc, RemoteDB, LocalDataBase):
+    def __i
+    @classmethod 
+    @trace 
+    def _create_local_product_routing_table():
+            ...
 
+    @classmethod
+    @trace
+     def _create_local_product_port_services_table():
+            ...
 
+urdata= UserDatabase
 
-
-
-class ProductDatabase(UserDatabase):
-    def __init__(self):
-        super().__init__(db_name)
-        self._create_product_table()
-        self.email = 
-
-
-    def _create_remote_product_routing_table(self):
-        class RemoteRoutingTable ():
+class ProductDatabase(urdata):
+    def __init_subclass():
+        super().__prepare__()
         
-        RemoteRoutingTable()
-            
-            ...
-    def _create_remote_product_port_table():
-        class RemotePortMapTable():
 
-        RemotePortMapTable()
+    class Method: 
+            pass
+        @staticmethod
+        def _static_fitler_gateway_index():
+                    return __gateway_index
             ...
-   
+        @staticmethod
+        def _filter_hostname_index():
+            ...
+        @staticmethod
+        def _filter_cidr_index()
+            ...
 
-    self.session = db.connection()
     add= session.add()
     commit= session.commit()
     search= 
 
-
 class IndividualFactorDistribution:
-    def __init__(self):
+    def __new__(self):
         self.edge = DataFrame( [], columns = [ 'destination' , 'fake_origin', ' real_origin' ])
-       @abstractdata
-       def index(*):
+    
+       def function({}):
+
+            def index(*):
+
+            index()
+
+         return 
 
 class MultiFactorDistribution:
-    def __init__(self):
+    def __new__(self):
         self.node = Series 
 
 
-class FrameworkData(IndividualFactorDistribution, MultiFactorDistribution, ProductDatabase):
+class FrameworkData(IndividualFactorDistribution, MultiFactorDistribution):
     def __init__(self):
-        super()__new__(edge, node):
-            self.target_host_data= []
-            self.packet_origin_address_data= []
+        super().__prepare__(edge, node):
+            
 
    async def _select_data(): 
         ...
 
 
-intel = ProductDatabase()
+product = ProductDatabase()
+index = FrameworkData()
 
 
 def user_input_target(self, *args):
@@ -190,9 +283,12 @@ def scan_prompt_data(self) -> :
         sys.stdout.write()
 
 
-
-def discover_host(*args):
-   
+def arp(parameter):
+    async def _discover_host_on_edge():
+        func = cap.ar
+        await cap.arping(str(parameter))
+        pass 
+    if parameter == ip.
 
 def establish_link_with_target(target):
     ...
@@ -220,13 +316,13 @@ e= threading.Event()
 scan_input_thread = threading.Thread(
     name=' scanning user input %()s'
     target = scan_prompt_data,
-    args=(e,)
+    args=(t,)
 )
 
 process_spoof_thread = threading.Thread(
     name=' packet processing %()s'
     target= process,
-    args=(e,),
+    args=(),
 )
 
 log = logging.getProcess()
