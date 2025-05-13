@@ -63,14 +63,14 @@ class Dataware(Base):
         self.con= sessionmaker(binsd=self.engine)
         self.meta= MetaData(bind=self.engine)
         super().__init__(Base)
-        @mapper_registry.as_declarative_base()
+    @mapper_registry.as_declarative_base()
     class Stack: 
         @declared_attr
         def __init__():
             self.schema = base_registry.map_imperatively()
             self.primary_key= 
         @declarative_base
-        class Main_Remote_Gateway_Scheme:
+         class Main_Remote_Gateway_Scheme:
             __tablename__= "main_gateway__scheme"
             mapid= Column(Integer, nullable= True)
             gatewayCIDRcidr= Column(Binary(1) primary_key=True, nullable=False) 
@@ -128,11 +128,12 @@ class Dataware(Base):
             masks=Column()
             update=Column()
         _database_table_schema= Database_Table_Schema
-        self.schema(_main_gateway__scheme, _node_eddge_schema, _kill_chain_schema, _main_route_schema, _database_table_schema)
-        stack=Stack()
+        schemes = (_main_gateway__scheme, _node_eddge_schema, _kill_chain_schema, _main_route_schema, _database_table_schema)
+        self.schema(i for i in schemes)
+    stack=Stack()
     class Private:
         @classmethod 
-        def __prepare__(Base, dom= stack.schema(), ):
+        def __init__(Base, dom= stack.schema(), ):
 
     @abstractclass
     class Method(Private, Base):
@@ -140,10 +141,8 @@ class Dataware(Base):
         async def search(**kwargs);
             await keep = con.execute.select([i for i in args.get["column "]]) 
             table = Series()
-            return DataFrame()
-            
+            return DataFrame(keep, index= table)
             ...
-
         @staticmethod
         def _initialize_database_schema(self):
             conn = self.engine.connection()
@@ -154,13 +153,12 @@ class Dataware(Base):
                     Column("url", Binary(16), primary_key= True),
                     Column("table", Binary(16), primary_key= True)
                 )
-
                 with conn.execute as exe:
                     if :
-
+                        ...
 db = Dataware
 class LocalDataBase(db):
-    def __init__(self, *args)
+    def __new__(self, *args)
         super().__prepare__(acc, engine, con)
         if con():
             return 0 
@@ -169,17 +167,12 @@ class LocalDataBase(db):
             try: 
                 engine(f'sqllite:///{*args.get['']}') 
             except : 
-            
-          
     class Method:
-
-
-    class Stack:
 
 class RemoteDatabase(db):
     @classmethod
     def __new__(self):
-        super()__prepare__()
+        super()__prepare__(acc, engine, con)
         if :
             metadata.create_all(self.engine)
             return super().__prepare__(Datawarehouse)
@@ -188,45 +181,34 @@ class RemoteDatabase(db):
         else : 
 
     class Method:
-
-    class Stack:
     
 class UserDatabase(abc, RemoteDB, LocalDataBase):
-    def __i
+    def __init__(*args): 
+        
+        super().__init__()
     @classmethod 
     @trace 
     def _create_local_product_routing_table():
             ...
-
     @classmethod
     @trace
      def _create_local_product_port_services_table():
             ...
-
 urdata= UserDatabase
-
 class ProductDatabase(urdata):
     def __init_subclass():
-        super().__prepare__()
-        
-
+        super().__init__()
     class Method: 
+        def _check_instance_of(*args):
+            def __isinstance__():
+            pass 
+    class Stack: 
+        def _get_attribute_of():
             pass
-        @staticmethod
-        def _static_fitler_gateway_index():
-                    return __gateway_index
             ...
-        @staticmethod
-        def _filter_hostname_index():
-            ...
-        @staticmethod
-        def _filter_cidr_index()
-            ...
-
-    add= session.add()
-    commit= session.commit()
-    search= 
-
+    add= 
+    commit= se
+    search= s
 class IndividualFactorDistribution:
     def __new__(self):
         self.edge = DataFrame( [], columns = [ 'destination' , 'fake_origin', ' real_origin' ])
