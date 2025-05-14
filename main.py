@@ -251,8 +251,11 @@ parser = argparse.ArgumentParser(
 )
 
 def scan_prompt_data(self) -> :
-    print('set arguemnets: ', sys.argv)
-    if self.prompt_data is not None: 
+    with sys.argv as argv:
+        print('set arguemnets: ', argv)
+    if x is not None: 
+        print(' continue  ')
+    else :
         sys.stdout.write()
 
 
