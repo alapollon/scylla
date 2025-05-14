@@ -68,9 +68,8 @@ class Dataware(Base):
         @declared_attr
         def __init__():
             self.schema = base_registry.map_imperatively()
-            self.primary_key= 
         @declarative_base
-         class Main_Remote_Gateway_Scheme:
+         class Main_Gateway_Scheme:
             __tablename__= "main_gateway__scheme"
             mapid= Column(Integer, nullable= True)
             gatewayCIDRcidr= Column(Binary(1) primary_key=True, nullable=False) 
@@ -83,10 +82,10 @@ class Dataware(Base):
         @declarative_base
         class Node_Edge_Scheme:
             __tablename__= "node_edge_scheme"
-            cidr=Column(Binary(2), foreign_key=True, nullable=False)
-            port=Column(Binary(3), nullable=True)
-            gatewayipv6= Column(Binary(16), foreign_key_key=True, nullable= False)
-            hostipv4= Column(Binary(4), nullable= True)
+            cidr=Column("cidr", Binary(2), foreign_key=True, nullable=False)
+            port=Column("port",Binary(3), nullable=True)
+            gatewayipv6= Column("gatewayipv6",Binary(16), foreign_key_key=True, nullable= False)
+            hostipv4= Column("hosti",Binary(4), nullable= True)
             hostipv6= Column(Binary(16), foreign_key=True,  nullable = False )
             mac=Column(Binary())
         _edge_schema= Node_Port_Map_Scheme
@@ -111,12 +110,12 @@ class Dataware(Base):
         @declarative_base
         class Route_Table_Schema:
             __tablename__="route_schemes"
-            update=Column(Timestamp(), nullable=False )
-            gatewayipv6=Column(Binary(), primary_key=True, nullable=False)
-            subhostipv6=Column(Binary(), primary_key=True, nullable=False )
-            hostname=Column(String(), primary_key+True, nullable=True )
-            mac=Column(Binary(), primary_key=True, nullable=False)
-            hops=Column(Binary(), primary_key=True, nullable=False)
+            update=Column("update", Timestamp(), nullable=False )
+            gatewayipv6=Column("gatewayipv6", Binary(), primary_key=True, nullable=False)
+            subhostipv6=Column("subhost", Binary(), primary_key=True, nullable=False )
+            hostname=Column("hostname", String(), primary_key+True, nullable=True )
+            mac=Column("mac", Binary(), primary_key=True, nullable=False)
+            hops=Column("hops", Binary(), primary_key=True, nullable=False)
         _main_route_schema= Route_Table_Schema
         @declarative_base
         class Database_Table_Schema:
@@ -128,12 +127,10 @@ class Dataware(Base):
             masks=Column()
             update=Column()
         _database_table_schema= Database_Table_Schema
-        schemes = (_main_gateway__scheme, _node_eddge_schema, _kill_chain_schema, _main_route_schema, _database_table_schema)
-        self.schema(i for i in schemes)
+  
     stack=Stack()
     class Private:
-        @classmethod 
-        def __init__(Base, dom= stack.schema(), ):
+      
 
     @abstractclass
     class Method(Private, Base):
@@ -146,95 +143,89 @@ class Dataware(Base):
         @staticmethod
         def _initialize_database_schema(self):
             conn = self.engine.connection()
-            mapping 
+            ...
             def _create_interelational_map():
-                tables=Table(
-                    "interelationship_datatable", 
-                    Column("url", Binary(16), primary_key= True),
-                    Column("table", Binary(16), primary_key= True)
-                )
+                
                 with conn.execute as exe:
                     if :
                         ...
 db = Dataware
 class LocalDataBase(db):
     def __new__(self, *args)
-        super().__prepare__(acc, engine, con)
         if con():
-            return 0 
-            continue 
-        elif: 
-            try: 
-                engine(f'sqllite:///{*args.get['']}') 
-            except : 
+            try:
+
+            except: 
+
+        else:  
+            return super().__prepare__(acc, engine, con)
+        
+    class Stack:
+        def __init_subclass():
+            return super().stack()
+
+    
     class Method:
 
 class RemoteDatabase(db):
     @classmethod
     def __new__(self):
-        super()__prepare__(acc, engine, con)
         if :
             metadata.create_all(self.engine)
-            return super().__prepare__(Datawarehouse)
+            return super()__prepare__(acc, engine, con)
         elif : 
 
         else : 
 
+    class Stack:
+        def __init_subclass():
+            return super().stack()
+
     class Method:
     
-class UserDatabase(abc, RemoteDB, LocalDataBase):
-    def __init__(*args): 
-        
-        super().__init__()
-    @classmethod 
-    @trace 
-    def _create_local_product_routing_table():
-            ...
-    @classmethod
-    @trace
-     def _create_local_product_port_services_table():
-            ...
-urdata= UserDatabase
-class ProductDatabase(urdata):
-    def __init_subclass():
-        super().__init__()
+class UserDatabase(abc, RemoteDatabase, LocalDataBase):
+    def __new__(*args): 
+        super().__init__(RemoteDatabase, LocalDataBase):
+        self.local=LocalDataBase
+        self.remote=RemoteDatabase
+        pass 
+     
+class ProductDatabase(UserDatabase):
+    def __init_subclass(**kwargs):
+       self.use= super().__prepare__(local, remote)
+       self.var= kwargs
+       if "remote" in var:
+            use.remote.engine(f"sql:///{}")
+        else:
+            use.local.engine(f"sql:///{}")
+
     class Method: 
         def _check_instance_of(*args):
             def __isinstance__():
-            pass 
+            pass  
+
     class Stack: 
-        def _get_attribute_of():
-            pass
-            ...
+
+    def __repr__():
+        pass 
+
+
     add= 
-    commit= se
-    search= s
+    commit= 
+    search= 
+
 class IndividualFactorDistribution:
-    def __new__(self):
-        self.edge = DataFrame( [], columns = [ 'destination' , 'fake_origin', ' real_origin' ])
-    
-       def function({}):
-
-            def index(*):
-
-            index()
-
-         return 
+        def __init__(self):
+            self.edge = DataFrame( [], columns = [ 'destination' , 'fake_origin', ' real_origin' ])
 
 class MultiFactorDistribution:
-    def __new__(self):
+    def __init__(self):
         self.node = Series 
 
-
 class FrameworkData(IndividualFactorDistribution, MultiFactorDistribution):
-    def __init__(self):
-        super().__prepare__(edge, node):
-            
+    def __new__():
 
-   async def _select_data(): 
-        ...
-
-
+    
 product = ProductDatabase()
 index = FrameworkData()
 
@@ -266,17 +257,19 @@ def scan_prompt_data(self) -> :
 
 
 def arp(parameter):
+    with index as arp_index:
+        ...
     async def _discover_host_on_edge():
         func = cap.ar
         await cap.arping(str(parameter))
         pass 
     if parameter == ip.
 
-def establish_link_with_target(target):
+def link():
     ...
-
-
 def spoof(packet):
+    with index as spoof_index:
+        ...
     packet = cap.IP(packet.get_payload())
     while packet.haslayer(cap.DNSRR):
         qname = packet[cap.DNSQR].qname 
