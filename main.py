@@ -148,7 +148,7 @@ class Base(declarative_base, type):
         update=Column()
     @classmethod
     def __prepare__(self, url):
-        pass 
+        pass
             
     class Private: 
         @classmethod
