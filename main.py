@@ -1,9 +1,24 @@
 #
 from os import path
-from sqlalchemy import (create_engine, 
-Column, Integer, String, MetaData, Table, Select, ForeignKey, 
-Binary, LargeBinary, Boolean )
-from sqlalchemy.orm import  declarative_base, registry, sessionmaker, session, mapped_column, mapped, relationship
+from sqlalchemy import (
+Column,
+ Integer, 
+ String, 
+ MetaData, 
+ Table, 
+ Select,
+ForeignKey, 
+Binary,
+ LargeBinary, 
+ Boolean )
+from sqlalchemy.engine import create_engine, URL as url 
+from sqlalchemy.orm import ( declarative_base, 
+registry, 
+sessionmaker, 
+Session, 
+mapped_column, 
+mapped, 
+relationship)
 from sqlalchemy.orm.decl_api import DeclarativeMeta 
 from pandas import DataFrame, MultiIndex, Series
 import ssl 
@@ -54,10 +69,14 @@ array=npy.array()
 
 
 class Base(declarative_base, type):
+     __registry={
+
+    }
     @declared_attr
     def __init__(self):
         self.engine= create_engine
         self.orm= sessionmaker(bind=self.engine)
+        self.session=Session
         self.meta= MetaData(bind=self.engine)
         self.arrange=registry()
 
@@ -82,12 +101,12 @@ class Base(declarative_base, type):
         bgp=Column()
     _edge_schema= Node_Port_Map_Scheme
     class Port_Services_Relationship:
-            __tablename__= "service_map_relationship"
-            device_uuid: Mapped []=mapped_column("uuid",Binary(), primary_key=True)
-            headgateway=Column()
-            services=Column("array", Array(), nullable=False)
-            nodes: Mapped[]=Column("edges")
-            host6=Column("hostipv6",primary_key=True, nullable=False)
+        __tablename__= "service_map_relationship"
+        device_uuid: Mapped []=mapped_column("uuid",Binary(), primary_key=True)
+        headgateway=Column()
+        services=Column("array", Array(), nullable=False)
+        nodes: Mapped[]=Column("edges")
+        host6=Column("hostipv6",primary_key=True, nullable=False)
     class Kansas_Cinncinati__Schema:
         __tablename__="kansas_cincinnati__scheme"
         mac_uuid: Mapped[]=Column()
@@ -127,7 +146,8 @@ class Base(declarative_base, type):
         cidr=Column(Binary(2), primary_key=True)
         routes: Mapped[list]=mapped_column(Binary(), primary_key=True )
         update=Column()
-    def __new__(self, url):
+    @classmethod
+    def __prepare__(self, url):
         pass 
             
     class Private: 
@@ -137,47 +157,63 @@ class Base(declarative_base, type):
             pass
 
 class LocalDataBase(Base):
-    def __init__(self, url)
-        self.url=
-        super().__prepare__()
-    
+    def __init__(self,*args)
+        super().__prepare__(engine, orm, session, meta, arrange):
+        with engine(f"{args.get['api']}:///{args.get['name']}") as engine:
+            return engine, orm, session, meta, arrange
     @staticmethod 
     def _table_():
         @declared_attr.directive
         def __mapper_args__(cls) -> Dict[str, any]:
-        if cls.__name__=="kanas_cincinnati_scheme"
-            return (
-                "node":cls.node6
-                "gateway":cls.gateway
-                "cidr":cls.nodecidr
-                "mac":cls.mac
-                "ports":cls.port
-            )
+            if cls.__name__=="kanas_cincinnati_scheme"
+                return (
+                    "node":cls.node6
+                    "gateway":cls.gateway
+                    "cidr":cls.nodecidr
+                    "mac":cls.mac
+                    "ports":cls.port
+                )
+            pass
+
+        
     def __repr__():
         pass
     class Stack:
         pass
 
 class RemoteDatabase(Base):
+    def __init__(self):
+        self.instance= 
+
     @classmethod
-    def __prepare__()
-        self.domain= 
-        return super().__prepare__()
-    
-    def __repr__():
-    class Stack:
-    
-class UserDatabase(abc, RemoteDatabase, LocalDataBase):
-    
-
-class ProductDatabase(UserDatabase):
-    def __init__(**kwargs):
-       self.var= kwargs
-       if "remote" in var:
-            use.remote.engine(f"sql:///{}")
+    def __prepare__(Base, self, drivername, username, password, host, port, database, query)
+        if args.get[api] is in self.instance.__get__():
+            return 0
         else:
-            use.local.engine(f"sql:///{}")
+            super().
+            with engine(url.set(drivername=drivename, username=username, password=password, host, port, database, query)) as engine:
 
+
+    def __repr__():
+        pass 
+    class Stack:
+
+class ProductDatabase():
+    def __init__(remote: Boolean, **kwargs):
+        self.api= [
+        drivername: str | None = kwargs.get(), 
+        username: str | None = kwargs.get(),
+         password: str | None = kwargs.get(), 
+         host: str | None = kwargs.get(), 
+         port: int | None = kwargs.get(), 
+         database: str | None = kwargs.get(),  
+         query: Mapping[str, Sequence[str] | str] | None = kwargs.get()]
+        if !remote:
+            LocalDataBase(i for i in api ).__init__()
+        elif remote:
+            RemoteDatabase(i for i in api ).__init__()
+        else: 
+            return 1
     def _check_instance_of(*args):
         def __isinstance__():
         pass  
@@ -185,8 +221,7 @@ class ProductDatabase(UserDatabase):
     def __repr__():
         pass 
 
-
-    add= 
+    add=
     commit= 
     search= 
 
