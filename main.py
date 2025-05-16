@@ -1,6 +1,8 @@
 #
 from os import path
-from sqlalchemy import create_engine, Column, Integer, String, MetaData, Table, Select, ForeignKey
+from sqlalchemy import (create_engine, 
+Column, Integer, String, MetaData, Table, Select, ForeignKey, 
+Binary, LargeBinary, Boolean )
 from sqlalchemy.orm import  declarative_base, registry, sessionmaker, session, mapped_column, mapped, relationship
 from sqlalchemy.orm.decl_api import DeclarativeMeta 
 from pandas import DataFrame, MultiIndex, Series
@@ -43,168 +45,142 @@ async def symbol():
         def __slot__():
     ...
 
-t = threading.Event()
-que = netfilterqueqe.NetfilterQueqe()
+t=threading.Event()
+que=netfilterqueqe.NetfilterQueqe()
 local_server_local_address= 
-Base= declarative_base
-base_registry= registry()
-relate= base_registry.generate_base()
-sql = sqlite3
-register = atexit.register()
-array = npy.array()
+sql=sqlite3
+register=atexit.register()
+array=npy.array()
 
 
-
-class Dataware(Base):
-    @classmethod
-    def __init__(self, *args ):
-        self.acc= Dataframe("database":[] "username":[],"password":[])
+class Base(declarative_base, type):
+    @declared_attr
+    def __init__(self):
         self.engine= create_engine
-        self.con= sessionmaker(binsd=self.engine)
+        self.orm= sessionmaker(bind=self.engine)
         self.meta= MetaData(bind=self.engine)
-        super().__init__(Base)
-    @mapper_registry.as_declarative_base()
-    class Stack: 
-        @declared_attr
-        def __init__():
-            self.schema = base_registry.map_imperatively()
-        @declarative_base
-         class Main_Gateway_Scheme:
-            __tablename__= "main_gateway__scheme"
-            mapid= Column(Integer, nullable= True)
-            gatewayCIDRcidr= Column(Binary(1) primary_key=True, nullable=False) 
-            hostname = Column(String, primary_key=False , nullable= True )
-            gatewayipv4=Column(Binary(4), primary_key=True, nullable=False)
-            gatewayipv6= Column(Binary(16), unique= True, primary_key=True, nullable=False)
-            bgp= Column()
-            update= Column(Timestamp(), nullable=False)
-        _main_gateway_schema= Main_Remote_Gateway_Scheme
-        @declarative_base
-        class Node_Edge_Scheme:
-            __tablename__= "node_edge_scheme"
-            cidr=Column("cidr", Binary(2), foreign_key=True, nullable=False)
-            port=Column("port",Binary(3), nullable=True)
-            gatewayipv6= Column("gatewayipv6",Binary(16), foreign_key_key=True, nullable= False)
-            hostipv4= Column("hosti",Binary(4), nullable= True)
-            hostipv6= Column(Binary(16), foreign_key=True,  nullable = False )
-            mac=Column(Binary())
-        _edge_schema= Node_Port_Map_Scheme
+        self.arrange=registry()
 
-        @declarative_base
-        @base_registry.mapped
-        class Port_Services_Relationship:
-                __tablename__= "service_map_relationship"
-                services=Column()
-                boolean=Column()
-                hostipv6=Column()
-        @declarative_base
-        class Kansas_Cinncinati__Schema:
-            __tablename__="kansas_cincinnati__scheme"
-            gatewayipv6=Column(Binary(16), foreign_key=True, nullable=False )
-            gatewayCIDR=Column(Binary(), foreign_key=True, nullable=False  )
-            nodeipv6=Column(Binary(), foreign_key=True, nullable=False )
-            nodeCIDR=Column(Binary(), nullable=True )
-            mac=Column(Binary(), foreign_key_key=True, nullable=True)
-            hops=Column(Binary(), foreign_key=True, nullable=False)
-        _kill_chain_schema= Kansas_Cinncinati_Schema
-        @declarative_base
-        class Route_Table_Schema:
-            __tablename__="route_schemes"
-            update=Column("update", Timestamp(), nullable=False )
-            gatewayipv6=Column("gatewayipv6", Binary(), primary_key=True, nullable=False)
-            subhostipv6=Column("subhost", Binary(), primary_key=True, nullable=False )
-            hostname=Column("hostname", String(), primary_key+True, nullable=True )
-            mac=Column("mac", Binary(), primary_key=True, nullable=False)
-            hops=Column("hops", Binary(), primary_key=True, nullable=False)
-        _main_route_schema= Route_Table_Schema
-        @declarative_base
-        class Database_Table_Schema:
-            __tablename__="database_routes_schema"
-            hostipv6=Column()
-            sub=Column()
-            hostname=Column()
-            fitness=Column()
-            masks=Column()
-            update=Column()
-        _database_table_schema= Database_Table_Schema
-  
-    stack=Stack()
-    class Private:
-      
+    class Main_Gateway_Scheme:
+        __tablename__= "main_gateway__scheme"
+        mac_uuid: []= mapped_column(Binary(), nullable= True)
+        cidr: Mapped[int]= mapped_column( primary_key=True, nullable=False)
+        gatewayipv4=Column(Binary(4),primary_key=True, nullable=False)
+        gatewayipv6= Column(Binary(16), unique= True, primary_key=True, nullable=False) 
+        gatewayname=Column(Binary(), primary_key=False , nullable= True )
+    _main_gateway_schema= Main_Remote_Gateway_Scheme
+    class Node_Edge_Scheme:
+        __tablename__= "node_edge_scheme"
+        mac_uuid: Mapped[]=Column()
+        mac=Column("mac", Binary(), primary_key=True)
+        hops=Column()
+        cidr=Column("cidr", Binary(2), foreign_key=True, nullable=False)
+        services=Column("open_services", LargeBinary(), nullable=False)
+        port=Column("port",Binary(),nullable=True)
+        hedge_gateway=Column("gatewayipv6",Binary(16), foreign_key_key=True, nullable= False)
+        ifgateway=Column("isgateway",Boolean(), nullable=False)
+        bgp=Column()
+    _edge_schema= Node_Port_Map_Scheme
+    class Port_Services_Relationship:
+            __tablename__= "service_map_relationship"
+            device_uuid: Mapped []=mapped_column("uuid",Binary(), primary_key=True)
+            headgateway=Column()
+            services=Column("array", Array(), nullable=False)
+            nodes: Mapped[]=Column("edges")
+            host6=Column("hostipv6",primary_key=True, nullable=False)
+    class Kansas_Cinncinati__Schema:
+        __tablename__="kansas_cincinnati__scheme"
+        mac_uuid: Mapped[]=Column()
+        hops=Column(Binary(), foreign_key=True, nullable=False)
+        hostmac=Column(nullable=True)
+        host6=Column()
+        headgateway6: Mapped[]=mapped_column(Primary_key=True, nullable=False )
+        gatecid=Column("cidr",Binary(), nullable=False  )
+        bgp=Column("",Boolean(),)
+        edges=Column("",Array(), nullable=False )
+        port=("map",Array(), nullable=False)
+    _kill_chain_schema= Kansas_Cinncinati_Schema
+    class Route_Table_Schema:
+        __tablename__="route_schemes"
+        gateway6: Mapped[]=mapped_column( Binary(), primary_key=True, nullable=False)
+        edges: Mapped[]=Column(nullable=False )
+        hosts=Column( Binary(), primary_key=True, nullable=False )
+        bgp=Column()
+        hops=Column("hops", Binary(), primary_key=True, nullable=False)
+    _main_route_schema= Route_Table_Schema
+    class Database_Table_Schema:
+        __tablename__="database_routes_schema"
+        mac_uuid=()
+        hostipv6=Column()
+        sub=Column()
+        hostname=Column()
+        url=Column()
+        fitness=Column()
+        masks=Column()
+    _database_table_schema= Database_Table_Schema
+    class Primary_Table_Schema:
+        __tablename__ = "mac_table__schema"
+        @mapper_registry.as_declarative()
+        id=Column()
+        uuid=Column(primary_key=True)
+        mac=Column(Binary(16), primary_key=True)
+        cidr=Column(Binary(2), primary_key=True)
+        routes: Mapped[list]=mapped_column(Binary(), primary_key=True )
+        update=Column()
+    def __new__(self, url):
+        pass 
+            
+    class Private: 
+        @classmethod
+        def __init__(self, *args: )-> Self:
+            self.token= args.get
+            pass
 
-    @abstractclass
-    class Method(Private, Base):
-        @staticmethod
-        async def search(**kwargs);
-            await keep = con.execute.select([i for i in args.get["column "]]) 
-            table = Series()
-            return DataFrame(keep, index= table)
-            ...
-        @staticmethod
-        def _initialize_database_schema(self):
-            conn = self.engine.connection()
-            ...
-            def _create_interelational_map():
-                
-                with conn.execute as exe:
-                    if :
-                        ...
-db = Dataware
-class LocalDataBase(db):
-    def __new__(self, *args)
-        if con():
-            try:
-
-            except: 
-
-        else:  
-            return super().__prepare__(acc, engine, con)
-        
-    class Stack:
-        def __init_subclass():
-            return super().stack()
-
+class LocalDataBase(Base):
+    def __init__(self, url)
+        self.url=
+        super().__prepare__()
     
-    class Method:
-
-class RemoteDatabase(db):
-    @classmethod
-    def __new__(self):
-        if :
-            metadata.create_all(self.engine)
-            return super()__prepare__(acc, engine, con)
-        elif : 
-
-        else : 
-
+    @staticmethod 
+    def _table_():
+        @declared_attr.directive
+        def __mapper_args__(cls) -> Dict[str, any]:
+        if cls.__name__=="kanas_cincinnati_scheme"
+            return (
+                "node":cls.node6
+                "gateway":cls.gateway
+                "cidr":cls.nodecidr
+                "mac":cls.mac
+                "ports":cls.port
+            )
+    def __repr__():
+        pass
     class Stack:
-        def __init_subclass():
-            return super().stack()
+        pass
 
-    class Method:
+class RemoteDatabase(Base):
+    @classmethod
+    def __prepare__()
+        self.domain= 
+        return super().__prepare__()
+    
+    def __repr__():
+    class Stack:
     
 class UserDatabase(abc, RemoteDatabase, LocalDataBase):
-    def __new__(*args): 
-        super().__init__(RemoteDatabase, LocalDataBase):
-        self.local=LocalDataBase
-        self.remote=RemoteDatabase
-        pass 
-     
+    
+
 class ProductDatabase(UserDatabase):
-    def __init_subclass(**kwargs):
-       self.use= super().__prepare__(local, remote)
+    def __init__(**kwargs):
        self.var= kwargs
        if "remote" in var:
             use.remote.engine(f"sql:///{}")
         else:
             use.local.engine(f"sql:///{}")
 
-    class Method: 
-        def _check_instance_of(*args):
-            def __isinstance__():
-            pass  
-
-    class Stack: 
+    def _check_instance_of(*args):
+        def __isinstance__():
+        pass  
 
     def __repr__():
         pass 
@@ -215,20 +191,22 @@ class ProductDatabase(UserDatabase):
     search= 
 
 class IndividualFactorDistribution:
-        def __init__(self):
-            self.edge = DataFrame( [], columns = [ 'destination' , 'fake_origin', ' real_origin' ])
+    def __init__(self):
+        self.df = DataFrame( [], columns = [ 'destination' , 'fake_origin', ' real_origin' ])
 
 class MultiFactorDistribution:
     def __init__(self):
-        self.node = Series 
+        self.series = Series 
 
 class FrameworkData(IndividualFactorDistribution, MultiFactorDistribution):
-    def __new__():
-
+    def __new__(self):
+        self.node=
+        self.edge=
+        self.host=
+        self.port=
     
 product = ProductDatabase()
 index = FrameworkData()
-
 
 def user_input_target(self, *args):
    target = 
