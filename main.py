@@ -66,6 +66,9 @@ local_server_local_address=
 sql=sqlite3
 register=atexit.register()
 array=npy.array()
+df=DataFrame
+series=Series
+mi= MultiIndex
 
 
 class Base(declarative_base, type):
@@ -227,11 +230,11 @@ class ProductDatabase():
 
 class IndividualFactorDistribution:
     def __init__(self):
-        self.df = DataFrame( [], columns = [ 'destination' , 'fake_origin', ' real_origin' ])
+        self.idf= DataFrame( [], columns = [ 'destination' , 'fake_origin', ' real_origin' ])
 
 class MultiFactorDistribution:
     def __init__(self):
-        self.series = Series 
+        self.mfd = Series 
 
 class FrameworkData(IndividualFactorDistribution, MultiFactorDistribution):
     def __new__(self):
@@ -272,14 +275,20 @@ def scan_prompt_data(self) -> :
         sys.stdout.write()
 
 
-def arp(parameter):
-    with index as arp_index:
-        ...
+def whois(parameter: string, **kwargs):
     async def _discover_host_on_edge():
-        func = cap.ar
-        await cap.arping(str(parameter))
-        pass 
-    if parameter == ip.
+        from cap import ARP as arp
+        function_arp=apr(op=ARP.who_has,pdst=parameter)
+        function_broadcast=cap.Ether(dst=kwargs.get('broadcast'))
+        if 
+        fire= function_arp/function_broadcast
+        res=srp.(fire, timeout=1, verbose=False)[0]
+        return res[0][1].hwsrc
+    with index() as arp_index:
+        who 
+        while is not !run:
+            return series(_discover_host_on_edge(), index=["destination","origin","lan"])
+            
 
 def link():
     ...
