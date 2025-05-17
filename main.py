@@ -150,7 +150,8 @@ class Base(declarative_base, type):
         routes: Mapped[list]=mapped_column(Binary(), primary_key=True )
         update=Column()
     @classmethod
-    def __prepare__(self, url):
+    def __prepare__(self):
+
         pass
             
     class Private: 
@@ -161,7 +162,7 @@ class Base(declarative_base, type):
 
 class LocalDataBase(Base):
     def __init__(self,*args)
-        super().__prepare__(engine, orm, session, meta, arrange):
+        super().__prepare__('Base',engine, orm, session, meta, arrange):
         with engine(f"{args.get['api']}:///{args.get['name']}") as engine:
             return engine, orm, session, meta, arrange
     @staticmethod 
@@ -194,7 +195,13 @@ class RemoteDatabase(Base):
             return 0
         else:
             super().
-            with engine(url.set(drivername=drivename, username=username, password=password, host, port, database, query)) as engine:
+            with engine(url.set(drivername=drivename, 
+            username=username, password=password, 
+            host=host,
+             port=port, 
+             database=database, 
+             query=query
+             )) as engine:
 
 
     def __repr__():
