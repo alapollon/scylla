@@ -185,11 +185,11 @@ class LocalDataBase(Base):
         pass
 
 class RemoteDatabase(Base):
-    def __init__(self):
+    def __init__(self, drivername, username, password, host, port, database, query):
         self.instance= 
 
     @classmethod
-    def __prepare__(Base, self, drivername, username, password, host, port, database, query)
+    def __prepare__(Base, self)
         if args.get[api] is in self.instance.__get__():
             return 0
         else:
