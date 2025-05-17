@@ -125,8 +125,8 @@ class Base(declarative_base, type):
     class Route_Table_Schema:
         __tablename__="route_schemes"
         gateway6: Mapped[]=mapped_column( Binary(), primary_key=True, nullable=False)
-        edges: Mapped[]=Column(nullable=False )
-        hosts=Column( Binary(), primary_key=True, nullable=False )
+        edges: Mapped[]=Column(Array(), nullable=False )
+        hosts=Column( Array(), primary_key=True, nullable=False )
         bgp=Column()
         hops=Column("hops", Binary(), primary_key=True, nullable=False)
     _main_route_schema= Route_Table_Schema
@@ -160,10 +160,20 @@ class Base(declarative_base, type):
             pass
 
 class LocalDataBase(Base):
-    def __init__(self,*args)
-        super().__prepare__('Base',engine, orm, session, meta, arrange):
-        with engine(f"{args.get['api']}:///{args.get['name']}") as engine:
-            return engine, orm, session, meta, arrange
+    def __init__(self, drivename, username, password, host, port, database, query)
+        super().__prepare__('Base',engine):
+        self.drivername: str = drivename, 
+        self.username: str | None = username,
+         self.password: str | None = password , 
+         self.host: str | None = host, 
+         self.port: int | None = port, 
+         self.database: str | None = database,  
+         self.query: Mapping[str, Sequence[str] | str] | None = query]
+    def _create_database_table(self):
+        if self.drivename is not None:
+            with engine() as engine:
+                engine(url.set())
+        
     @staticmethod 
     def _table_():
         @declared_attr.directive
@@ -177,8 +187,6 @@ class LocalDataBase(Base):
                     "ports":cls.port
                 )
             pass
-
-        
     def __repr__():
         pass
     class Stack:
@@ -186,34 +194,45 @@ class LocalDataBase(Base):
 
 class RemoteDatabase(Base):
     def __init__(self, drivername, username, password, host, port, database, query):
-        self.instance= 
-
+         super().__init__()
+         self.isInstanceOf= 
+         self.drivename=drivename
+         self.username=username
+         self.password=password
+         self.host=host
+         self.port=port 
+         self.database=database
+         pass
     @classmethod
     def __prepare__(Base, self)
-        if args.get[api] is in self.instance.__get__():
+        super().__get__()
+        if args.get['api'] is in self.instance.__get__():
             return 0
         else:
-            super().
-            with engine(url.set(drivername=drivename, 
-            username=username, password=password, 
-            host=host,
-             port=port, 
-             database=database, 
-             query=query
+            super().__call__(engine)
+            with engine(url.set(
+            drivername=self.drivename, 
+            username=self.username, 
+            password=self.password, 
+            host=self.host,
+             port=self.port, 
+             database=self.database, 
+             query=self.query
              )) as engine:
+                
 
 
     def __repr__():
         pass 
     class Stack:
 
-class ProductDatabase():
+class ProductDatabase(LocalDataBase, RemoteDatabase):
     def __init__(remote: Boolean, **kwargs):
         self.api= [
-        drivername: str | None = kwargs.get(), 
+        drivername: str = kwargs.get(), 
         username: str | None = kwargs.get(),
          password: str | None = kwargs.get(), 
-         host: str | None = kwargs.get(), 
+         host: str  = kwargs.get(), 
          port: int | None = kwargs.get(), 
          database: str | None = kwargs.get(),  
          query: Mapping[str, Sequence[str] | str] | None = kwargs.get()]
