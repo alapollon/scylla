@@ -275,7 +275,7 @@ def scan_prompt_data(self) -> :
         sys.stdout.write()
 
 
-def whois(parameter: string, **kwargs):
+def whois(parameter:string,broadcast:string):
     async def _discover_host_on_edge():
         from cap import ARP as arp
         function_arp=apr(op=ARP.who_has,pdst=parameter)
@@ -285,9 +285,9 @@ def whois(parameter: string, **kwargs):
         res=srp.(fire, timeout=1, verbose=False)[0]
         return res[0][1].hwsrc
     with index() as arp_index:
-        who 
+        run=asyncio.run()
         while is not !run:
-            return series(_discover_host_on_edge(), index=["destination","origin","lan"])
+            return series(, index=["destination","origin","lan"])
             
 
 def link():
