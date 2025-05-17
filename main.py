@@ -150,8 +150,7 @@ class Base(declarative_base, type):
         routes: Mapped[list]=mapped_column(Binary(), primary_key=True )
         update=Column()
     @classmethod
-    def __prepare__(self):
-
+    def __call__(cls, *args):
         pass
             
     class Private: 
