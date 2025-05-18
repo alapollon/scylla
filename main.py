@@ -71,10 +71,7 @@ series=Series
 mi= MultiIndex
 
 
-class Base(declarative_base, type):
-     __registry={
-
-    }
+class Base(declarative_base):
     @declared_attr
     def __init__(self):
         self.engine= create_engine
@@ -85,41 +82,44 @@ class Base(declarative_base, type):
 
     class Main_Gateway_Scheme:
         __tablename__= "main_gateway__scheme"
-        mac_uuid: []= mapped_column(Binary(), nullable= True)
-        cidr: Mapped[int]= mapped_column( primary_key=True, nullable=False)
-        gatewayipv4=Column(Binary(4),primary_key=True, nullable=False)
-        gatewayipv6= Column(Binary(16), unique= True, primary_key=True, nullable=False) 
-        gatewayname=Column(Binary(), primary_key=False , nullable= True )
+        mac_uuid: []= mapped_column("uuid",Binary(), unique=True, nullable=False)
+        gate_cidr= mapped_column("gateway",primary_key=True, nullable=False)
+        gatewayipv4=Column("gateway4",Binary(4),primary_key=True, nullable=True)
+        hops=Column("hops", Binary(), nullable=False)
+        gatewayipv6= Column("gatway6",Binary(16), unique= True, primary_key=True, nullable=False) 
+        gatewayname=Column("gatewayname",Binary(4), primary_key=False , nullable= True )
+        domain=Column("Company", Binary(), unique=True, nullable=False )
     _main_gateway_schema= Main_Remote_Gateway_Scheme
     class Node_Edge_Scheme:
         __tablename__= "node_edge_scheme"
-        mac_uuid: Mapped[]=Column()
-        mac=Column("mac", Binary(), primary_key=True)
-        hops=Column()
-        cidr=Column("cidr", Binary(2), foreign_key=True, nullable=False)
-        services=Column("open_services", LargeBinary(), nullable=False)
+        mac_uuid: Mapped[]=Column("uuid",primary_key=True)
+        mac=Column("mac",Binary(),primary_key=True)
+        hops=Column("hops",Binary())
+        cidr=Column("cidr",Binary(2),foreign_key=True,nullable=False)
+        services=Column("open_services",LargeBinary(),nullable=False)
         port=Column("port",Binary(),nullable=True)
-        hedge_gateway=Column("gatewayipv6",Binary(16), foreign_key_key=True, nullable= False)
-        ifgateway=Column("isgateway",Boolean(), nullable=False)
+        gateway: Mapped[]=mapped_column("gatewayipv6",Binary(16),foreign_key_key=True, nullable= False)
+        ifgateway=Column("isgateway",Boolean(), primary_key=True, nullable=False)
         bgp=Column()
     _edge_schema= Node_Port_Map_Scheme
     class Port_Services_Relationship:
         __tablename__= "service_map_relationship"
         device_uuid: Mapped []=mapped_column("uuid",Binary(), primary_key=True)
-        headgateway=Column()
-        services=Column("array", Array(), nullable=False)
-        nodes: Mapped[]=Column("edges")
-        host6=Column("hostipv6",primary_key=True, nullable=False)
+        gateway=Column("gateway",Binary(16),primary_key=True)
+        services=Column("array", LargeBinary(), nullable=False)
+        nodes: Mapped[]=Column("edges", LargeBinary(), nullable=False)
+        hostipv6=Column("hostipv6",primary_key=True, nullable=False)
     class Kansas_Cinncinati__Schema:
         __tablename__="kansas_cincinnati__scheme"
-        mac_uuid: Mapped[]=Column()
-        hops=Column(Binary(), foreign_key=True, nullable=False)
+        uuid: Mapped[]=Column("uuid",unique=True,primary_key=True,nullable=True)
+        hops=Column(Binary(), nullable=False)
         hostmac=Column(nullable=True)
-        host6=Column()
-        headgateway6: Mapped[]=mapped_column(Primary_key=True, nullable=False )
+        hostipv6=Column()
         gatecid=Column("cidr",Binary(), nullable=False  )
-        bgp=Column("",Boolean(),)
-        edges=Column("",Array(), nullable=False )
+        gateway=Column()
+        headgateway6: Mapped[]=mapped_column(Primary_key=True, nullable=False )
+        bgp=Column("bgp",Boolean(),)
+        edges=Column("edges",Array(), nullable=False )
         port=("map",Array(), nullable=False)
     _kill_chain_schema= Kansas_Cinncinati_Schema
     class Route_Table_Schema:
@@ -132,7 +132,7 @@ class Base(declarative_base, type):
     _main_route_schema= Route_Table_Schema
     class Database_Table_Schema:
         __tablename__="database_routes_schema"
-        mac_uuid=()
+        uuid=()
         hostipv6=Column()
         sub=Column()
         hostname=Column()
@@ -148,11 +148,8 @@ class Base(declarative_base, type):
         mac=Column(Binary(16), primary_key=True)
         cidr=Column(Binary(2), primary_key=True)
         routes: Mapped[list]=mapped_column(Binary(), primary_key=True )
-        update=Column()
-    @classmethod
-    def __call__(cls, *args):
-        pass
-            
+        update=Column()     
+    _primary_schema_=Primary_Table_Schema
     class Private: 
         @classmethod
         def __init__(self, *args: )-> Self:
@@ -164,84 +161,49 @@ class LocalDataBase(Base):
         super().__prepare__('Base',engine):
         self.drivername: str = drivename, 
         self.username: str | None = username,
-         self.password: str | None = password , 
+         self.password: str | None = password, 
          self.host: str | None = host, 
          self.port: int | None = port, 
          self.database: str | None = database,  
-         self.query: Mapping[str, Sequence[str] | str] | None = query]
-    def _create_database_table(self):
-        if self.drivename is not None:
-            with engine() as engine:
-                engine(url.set())
-        
-    @staticmethod 
-    def _table_():
-        @declared_attr.directive
-        def __mapper_args__(cls) -> Dict[str, any]:
-            if cls.__name__=="kanas_cincinnati_scheme"
-                return (
-                    "node":cls.node6
-                    "gateway":cls.gateway
-                    "cidr":cls.nodecidr
-                    "mac":cls.mac
-                    "ports":cls.port
-                )
-            pass
-    def __repr__():
-        pass
-    class Stack:
-        pass
+         self.query: Mapping[str, Sequence[str] | str] | None = query
+    
 
 class RemoteDatabase(Base):
+    @classmethod
     def __init__(self, drivername, username, password, host, port, database, query):
          super().__init__()
-         self.isInstanceOf= 
-         self.drivename=drivename
-         self.username=username
-         self.password=password
-         self.host=host
-         self.port=port 
-         self.database=database
-         pass
-    @classmethod
-    def __prepare__(Base, self)
-        super().__get__()
-        if args.get['api'] is in self.instance.__get__():
-            return 0
+            
         else:
-            super().__call__(engine)
-            with engine(url.set(
-            drivername=self.drivename, 
-            username=self.username, 
-            password=self.password, 
-            host=self.host,
-             port=self.port, 
-             database=self.database, 
-             query=self.query
-             )) as engine:
-                
 
-
+    def __new__(): 
+        pass
     def __repr__():
         pass 
-    class Stack:
+    
+class Userdata(type=metadata):
+    _registry= { }
+    def __init_subclass():
+        pass 
 
-class ProductDatabase(LocalDataBase, RemoteDatabase):
+    class Stack:
+class ProductDatabase(Userdata):
     def __init__(remote: Boolean, **kwargs):
         self.api= [
         drivername: str = kwargs.get(), 
         username: str | None = kwargs.get(),
          password: str | None = kwargs.get(), 
-         host: str  = kwargs.get(), 
+         host: str = kwargs.get(), 
          port: int | None = kwargs.get(), 
          database: str | None = kwargs.get(),  
          query: Mapping[str, Sequence[str] | str] | None = kwargs.get()]
         if !remote:
+            #todo: reassign the instantia
             LocalDataBase(i for i in api ).__init__()
-        elif remote:
+        elif remote & Userdata()._registry:
             RemoteDatabase(i for i in api ).__init__()
         else: 
-            return 1
+            return super().
+
     def _check_instance_of(*args):
         def __isinstance__():
         pass  
@@ -304,15 +266,17 @@ def whois(parameter:string,broadcast:string):
     async def _discover_host_on_edge():
         from cap import ARP as arp
         function_arp=apr(op=ARP.who_has,pdst=parameter)
-        function_broadcast=cap.Ether(dst=kwargs.get('broadcast'))
-        if 
-        fire= function_arp/function_broadcast
-        res=srp.(fire, timeout=1, verbose=False)[0]
-        return res[0][1].hwsrc
+        function_broadcast=cap.Ether(dst=broadcast)
+        if broadcast is None:
+            fire= function_arp/function_broadcast
+            res=srp.(fire, timeout=1, verbose=False)[0]
+            return res[0][1].hwsrc
+    discovery= _discover_host_on_edge()
     with index() as arp_index:
         run=asyncio.run()
         while is not !run:
-            return series(, index=["destination","origin","lan"])
+            index=series(,index=["destination","origin","lan"])
+            for 
             
 
 def link():
