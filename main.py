@@ -22,6 +22,7 @@ relationship)
 from sqlalchemy.orm.decl_api import DeclarativeMeta 
 from pandas import DataFrame, MultiIndex, Series
 import ssl 
+import time
 import numpy as npy 
 import threading
 import netfilterqueqe
@@ -158,7 +159,7 @@ class Base(declarative_base):
 
 class LocalDataBase(Base):
     def __init__(self, drivename, username, password, host, port, database, query)
-        super().__prepare__('Base',engine):
+        super().__init__():
         self.drivername: str = drivename, 
         self.username: str | None = username,
          self.password: str | None = password, 
@@ -166,15 +167,14 @@ class LocalDataBase(Base):
          self.port: int | None = port, 
          self.database: str | None = database,  
          self.query: Mapping[str, Sequence[str] | str] | None = query
-    
-
+    def _initialize_local__database():
+        pass
+        
 class RemoteDatabase(Base):
     @classmethod
     def __init__(self, drivername, username, password, host, port, database, query):
          super().__init__()
-            
-        else:
-
+            pass
     def __new__(): 
         pass
     def __repr__():
@@ -182,12 +182,27 @@ class RemoteDatabase(Base):
     
 class Userdata(type=metadata):
     _registry= { }
-    def __init_subclass():
-        pass 
-
-    class Stack:
+    def __init_subclass(cls):
+        local=type.__prepare__('LocalDatabase', ())
+        remote=type.__prepare__('RemoteDatabase',())
+        args= list(inspect.signature(cls).parameters)
+        signature=','.join('{self.%s!r}'% arg for arg in args)
+        title='def __repr__(self):\n'
+        title+=f'  return f"{cls.__name__}({argvals})"\n '
+        header={}
+        exec(code,header)
+        cls.__repr__=header['__repr__']
+       with cls.mimetypes as metas:
+            for mt in metas:
+                Userdata._registry[mt.mimetypes]=cls
+                time.sleep(2)
+            pass 
+    def factor():
+        stack=[]
+        return stack
 class ProductDatabase(Userdata):
     def __init__(remote: Boolean, **kwargs):
+        super().__init__()
         self.api= [
         drivername: str = kwargs.get(), 
         username: str | None = kwargs.get(),
@@ -197,12 +212,11 @@ class ProductDatabase(Userdata):
          database: str | None = kwargs.get(),  
          query: Mapping[str, Sequence[str] | str] | None = kwargs.get()]
         if !remote:
-            #todo: reassign the instantia
-            LocalDataBase(i for i in api ).__init__()
-        elif remote & Userdata()._registry:
-            RemoteDatabase(i for i in api ).__init__()
+            pass
+        elif remote :
+            pass
         else: 
-            return super().
+           pass 
 
     def _check_instance_of(*args):
         def __isinstance__():
@@ -224,35 +238,34 @@ class MultiFactorDistribution:
         self.mfd = Series 
 
 class FrameworkData(IndividualFactorDistribution, MultiFactorDistribution):
-    def __new__(self):
+    def __init__(self):
         self.node=
         self.edge=
         self.host=
         self.port=
-    
+        return 0
+
 product = ProductDatabase()
 index = FrameworkData()
 
-def user_input_target(self, *args):
-   target = 
-    if args.get == ['target*']:
-            target.append(args.get['target']) 
+def user_input_target(self, **kwargs):
+    if kwargs.get == ['target*']:
+            target.append(kwargs.get['target*']) 
         return destination
     else:
         return 0 
-    ...
+    pass
 
 def user_input_origin( *args):
     origin = 
     if args.get == ['origin*']: 
-    ...
-
+    else:
+        ...
 target_by_user = user_input_target
 origin_by_user = user_input_origin
 parser = argparse.ArgumentParser(
     description=' Enter the target and origin of the attack',
 )
-
 def scan_prompt_data(self) -> :
     with sys.argv as argv:
         print('set arguemnets: ', argv)
@@ -260,7 +273,6 @@ def scan_prompt_data(self) -> :
         print(' continue  ')
     else :
         sys.stdout.write()
-
 
 def whois(parameter:string,broadcast:string):
     async def _discover_host_on_edge():
