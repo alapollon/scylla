@@ -160,46 +160,60 @@ class Base(declarative_base):
 class LocalDataBase(Base):
     def __init__(self, drivename, username, password, host, port, database, query)
         super().__init__():
-        self.drivername: str = drivename, 
-        self.username: str | None = username,
-         self.password: str | None = password, 
-         self.host: str | None = host, 
-         self.port: int | None = port, 
-         self.database: str | None = database,  
-         self.query: Mapping[str, Sequence[str] | str] | None = query
-    def _initialize_local__database():
-        pass
+      with self.engine as engine:
+        engine(url.set(
+            drivename,
+            username, 
+            password,
+            host, 
+            port,
+            database,
+            query
+        ))
+
         
 class RemoteDatabase(Base):
-    @classmethod
     def __init__(self, drivername, username, password, host, port, database, query):
          super().__init__()
-            pass
-    def __new__(): 
-        pass
-    def __repr__():
-        pass 
+            with self.engine as engine:
+                engine(url.set(
+                    drivename,
+                    username, 
+                    password,
+                    host, 
+                    port,
+                    database,
+                    query
+                ))
+                if self.orm:
+                else:
+
     
-class Userdata(type=metadata):
+ 
+    
+class Userdata(type):
     _registry= { }
-    def __init_subclass(cls):
-        local=type.__prepare__('LocalDatabase', ())
-        remote=type.__prepare__('RemoteDatabase',())
+    def __init_subclass(cls, ):
+        namespace=type.__prepare__(, ())
         args= list(inspect.signature(cls).parameters)
         signature=','.join('{self.%s!r}'% arg for arg in args)
-        title='def __repr__(self):\n'
+        title='def __repr__(self) -> str:\n'
         title+=f'  return f"{cls.__name__}({argvals})"\n '
         header={}
-        exec(code,header)
+        exec(
+            title,
+            header)
         cls.__repr__=header['__repr__']
        with cls.mimetypes as metas:
             for mt in metas:
                 Userdata._registry[mt.mimetypes]=cls
                 time.sleep(2)
             pass 
+   def __new__(meta, clsname, bases, methods):
+        pass
     def factor():
         stack=[]
-        return stack
+        pass
 class ProductDatabase(Userdata):
     def __init__(remote: Boolean, **kwargs):
         super().__init__()
