@@ -74,7 +74,7 @@ mi= MultiIndex
 
 from ss import StreamRequestHandler
 class DatabaseServer(StreamRequestHandler):
-    def __init__(self, time, publickey, ssl):
+    def __init__(self, time, publickey, secure_socket_layer_certificate):
         self.database=()
         pass 
     @staticmethod 
