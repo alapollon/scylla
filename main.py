@@ -145,12 +145,15 @@ class Base(declarative_base):
         __tablename__ = "mac_table__schema"
         @mapper_registry.as_declarative()
         id=Column()
-        uuid=Column(primary_key=True)
-        mac=Column(Binary(16), primary_key=True)
-        cidr=Column(Binary(2), primary_key=True)
-        routes: Mapped[list]=mapped_column(Binary(), primary_key=True )
+        uuid=Column("uuid", Binary(),primary_key=True)
+        mac=Column("mac",Binary(16), primary_key=True)
+        cidr=Column("cidr",Binary(2), nullable=True)
+        routes: []=mapped_column("edges",Array(), fore_key=True )
         update=Column()     
     _primary_schema_=Primary_Table_Schema
+
+    def __init_database_tables_():
+        pass
     class Private: 
         @classmethod
         def __init__(self, *args: )-> Self:
@@ -171,7 +174,6 @@ class LocalDataBase(Base):
             query
         ))
 
-
         
 class RemoteDatabase(Base):
     def __init__(self, drivername, username, password, host, port, database, query):
@@ -186,36 +188,31 @@ class RemoteDatabase(Base):
                     database,
                     query
                 ))
-                if self.orm:
-                else:
+                
 
     
  
     
-class Userdatabase(type):
+class Userdatabase(thread.threadding, type):
     _registry= { }
-    def __init_subclass(cls, ):
-        namespace=type.__prepare__(, ())
+    def __init_subclass(cls,, *args: string):
+        namespace=type.__prepare__(cls, ())
         args= list(inspect.signature(cls).parameters)
         signature=','.join('{self.%s!r}'% arg for arg in args)
-        title='def __repr__(self) -> str:\n'
-        title+=f'  return f"{cls.__name__}({argvals})"\n '
+        title='def __call__(cls, remote: Boolean, **kwargs, ) -> type:\n'
+        title+=f'  return super().__call__(remote: Boolean, **kwargs)'
         header={}
         exec(
             title,
             header)
-        cls.__repr__=header['__repr__']
-       with cls.mimetypes as metas:
-            for mt in metas:
-                Userdata._registry[mt.mimetypes]=cls
-                time.sleep(2)
-            pass 
+        return cls._registry[][name]=cls
    def __new__(meta, clsname, bases, methods):
-        pass
+        namespace['_driver_nd_host_url_']= 
+        return super().__new__(scm, name, bases, namespace)
     def factor():
         stack=[]
         pass
-class ProductDatabase(metaclass=Userdatbase):
+class ProductDatabase( metaclass=Userdatbase):
     def __init__(remote: Boolean, **kwargs):
         self.api= [
         drivername: str = kwargs.get(), 
@@ -226,7 +223,7 @@ class ProductDatabase(metaclass=Userdatbase):
          database: str | None = kwargs.get(),  
          query: Mapping[str, Sequence[str] | str] | None = kwargs.get()]
         if !remote:
-            pass
+            pass 
         elif remote :
             pass
         else: 
