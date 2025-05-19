@@ -171,6 +171,7 @@ class LocalDataBase(Base):
             query
         ))
 
+
         
 class RemoteDatabase(Base):
     def __init__(self, drivername, username, password, host, port, database, query):
@@ -191,7 +192,7 @@ class RemoteDatabase(Base):
     
  
     
-class Userdata(type):
+class Userdatabase(type):
     _registry= { }
     def __init_subclass(cls, ):
         namespace=type.__prepare__(, ())
@@ -214,9 +215,8 @@ class Userdata(type):
     def factor():
         stack=[]
         pass
-class ProductDatabase(Userdata):
+class ProductDatabase(metaclass=Userdatbase):
     def __init__(remote: Boolean, **kwargs):
-        super().__init__()
         self.api= [
         drivername: str = kwargs.get(), 
         username: str | None = kwargs.get(),
