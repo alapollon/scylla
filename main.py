@@ -48,7 +48,7 @@ PATH = (
     Volumes= 'volumes/*',
     Interface= '/dev/d*',
     Cache= '/tmp',
-    ServerKeys= '~/.ssh/*',
+    Keys= '~/.ssh/*',
     Log= '/var/log/scylla/*')
 
 async def symbol():
@@ -56,10 +56,11 @@ async def symbol():
         with PATH as path
             for i in path:
                 os.path.add_arguemnt(i)
-        
     class Pipe: 
         def __slot__():
-    ...
+            pass
+
+
 
 t=threading.Event()
 que=netfilterqueqe.NetfilterQueqe()
@@ -71,7 +72,22 @@ df=DataFrame
 series=Series
 mi= MultiIndex
 
-
+from ss import StreamRequestHandler
+class DatabaseServer(StreamRequestHandler):
+    def __init__(self, time, publickey, ssl):
+        self.database=()
+        pass 
+    @staticmethod 
+    def _handle_(self,load):
+        resp= 
+        if isinstance(self.req,socker.socket)
+            def stream(pay: None):
+                self.req.sendall(pay)
+            stream() 
+        else:
+            self.server.socket.sendto(resp())
+            pass
+db=DatabaseServer
 class Base(declarative_base):
     @declared_attr
     def __init__(self):
@@ -151,9 +167,19 @@ class Base(declarative_base):
         routes: []=mapped_column("edges",Array(), fore_key=True )
         update=Column()     
     _primary_schema_=Primary_Table_Schema
+    def __init_sqlite_tables(drivename, name):
+        session=self.session
+        engine=self.engine(url.set(drivername=drivename,database=name) echo)
+        self.meta.create_all(engine)
+        if session()
 
-    def __init_database_tables_():
+
+    def __init_database_tables_(*args):
+        with self.session as session:
+            session.add_all([])
+            session.commit()
         pass
+
     class Private: 
         @classmethod
         def __init__(self, *args: )-> Self:
@@ -163,8 +189,7 @@ class Base(declarative_base):
 class LocalDatabase(Base):
     def __init__(self, drivename, username, password, host, port, database, query)
         super().__init__():
-      with self.engine as engine:
-        engine(url.set(
+      with self.engine(url.set(
             drivename,
             username, 
             password,
@@ -172,34 +197,48 @@ class LocalDatabase(Base):
             port,
             database,
             query
-        ))
-      def _basename_():
+        ) echo=True) as engine:
+            if engine: 
+                self.schemes=
+               with session(engine) as session:
+                session.add_all([i for i in self.schemes ])
+                session.commit()
+            else: 
+                with self.meta as meta:
+                    meta.create_all(engine)
+
+      def _class_basename():
         val= self.drive=drivename +"_"+self.host=host 
         pass
-    
-      def __init_database():
-        pass
+
     
 class RemoteDatabase(Base):
     def __init__(self, drivername, username, password, host, port, database, query):
          super().__init__()
-            with self.engine as engine:
-                engine(url.set(
-                    drivename,
-                    username, 
-                    password,
-                    host, 
-                    port,
-                    database,
-                    query
-                ))
+            with self.engine(url.set(
+            drivename,
+            username, 
+            password,
+            host, 
+            port,
+            database,
+            query
+        ) echo=True) as engine:
+            if : 
+                
+            else : 
+                self.schemes=
+               with session(engine) as session:
+                session.add_all([i for i in self.schemes ])
+                session.commit()
     
-    def _basename_():
+    def _class_basename():
         val= self.drive=drivename +"_"+self.host=host 
         pass
 
-
     def _link_with_remote():
+        with db()._handle_() as handle:
+            if handle
         pass
 
     
@@ -240,12 +279,9 @@ class ProductDatabase( metaclass=Userdatbase):
         else: 
            pass 
 
-    def _check_instance_of(*args):
-        def __isinstance__():
-        pass  
-
-    def __repr__():
-        pass 
+    def _data_():
+        =[]
+        pass
 
     add=
     commit= 
