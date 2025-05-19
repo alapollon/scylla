@@ -160,7 +160,7 @@ class Base(declarative_base):
             self.token= args.get
             pass
 
-class LocalDataBase(Base):
+class LocalDatabase(Base):
     def __init__(self, drivename, username, password, host, port, database, query)
         super().__init__():
       with self.engine as engine:
@@ -173,8 +173,13 @@ class LocalDataBase(Base):
             database,
             query
         ))
-
-        
+      def _basename_():
+        val= self.drive=drivename +"_"+self.host=host 
+        pass
+    
+      def __init_database():
+        pass
+    
 class RemoteDatabase(Base):
     def __init__(self, drivername, username, password, host, port, database, query):
          super().__init__()
@@ -188,13 +193,19 @@ class RemoteDatabase(Base):
                     database,
                     query
                 ))
-                
-
     
- 
+    def _basename_():
+        val= self.drive=drivename +"_"+self.host=host 
+        pass
+
+
+    def _link_with_remote():
+        pass
+
     
 class Userdatabase(thread.threadding, type):
     _registry= { }
+    items=t.__bases__()
     def __init_subclass(cls,, *args: string):
         namespace=type.__prepare__(cls, ())
         args= list(inspect.signature(cls).parameters)
@@ -209,8 +220,8 @@ class Userdatabase(thread.threadding, type):
    def __new__(meta, clsname, bases, methods):
         namespace['_driver_nd_host_url_']= 
         return super().__new__(scm, name, bases, namespace)
+    @classmethod
     def factor():
-        stack=[]
         pass
 class ProductDatabase( metaclass=Userdatbase):
     def __init__(remote: Boolean, **kwargs):
