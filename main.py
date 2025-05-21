@@ -167,18 +167,20 @@ class Base(declarative_base):
         routes: []=mapped_column("edges",Array(), fore_key=True )
         update=Column()     
     _primary_schema_=Primary_Table_Schema
-    def __init_sqlite_tables(drivename, name):
+    def _init_sqlite_tables():
         session=self.session
         engine=self.engine(url.set(drivername=drivename,database=name) echo)
         self.meta.create_all(engine)
         if session()
-
-
-    def __init_database_tables_(*args):
+    init_contemporary_data_tables=_init_sqlite_tables()
+    def _init_database_tables(self, *args):
+        def scheme():
+            pass
         with self.session as session:
             session.add_all([])
             session.commit()
         pass
+    create_all_tables=_init_database_tables()
 
     class Private: 
         @classmethod
@@ -187,22 +189,11 @@ class Base(declarative_base):
             pass
 
 class LocalDatabase(Base):
-    def __init__(self, drivename, username, password, host, port, database, query)
+    def __init__(self, api)
         super().__init__():
-      with self.engine(url.set(
-            drivename,
-            username, 
-            password,
-            host, 
-            port,
-            database,
-            query
-        ) echo=True) as engine:
+      with self.engine(api echo=True) as engine:
             if engine: 
-                self.schemes=
-               with session(engine) as session:
-                session.add_all([i for i in self.schemes ])
-                session.commit()
+               create_all_tables
             else: 
                 with self.meta as meta:
                     meta.create_all(engine)
@@ -213,24 +204,16 @@ class LocalDatabase(Base):
 
     
 class RemoteDatabase(Base):
-    def __init__(self, drivername, username, password, host, port, database, query):
+    def __init__(self, api):
          super().__init__()
-            with self.engine(url.set(
-            drivename,
-            username, 
-            password,
-            host, 
-            port,
-            database,
-            query
-        ) echo=True) as engine:
-            if : 
-                
-            else : 
-                self.schemes=
-               with session(engine) as session:
-                session.add_all([i for i in self.schemes ])
-                session.commit()
+          self.schemes=
+            with self.engine(api echo=True) as engine:
+                if : 
+                    
+                elif :  
+                    with session(engine) as session:
+                        session.add_all([i for i in self.schemes ])
+                        session.commit()
     
     def _class_basename():
         val= self.drive=drivename +"_"+self.host=host 
@@ -264,7 +247,7 @@ class Userdatabase(thread.threadding, type):
         pass
 class ProductDatabase( metaclass=Userdatbase):
     def __init__(remote: Boolean, **kwargs):
-        self.api= [
+        self.rest=[
         drivername: str = kwargs.get(), 
         username: str | None = kwargs.get(),
          password: str | None = kwargs.get(), 
@@ -272,6 +255,7 @@ class ProductDatabase( metaclass=Userdatbase):
          port: int | None = kwargs.get(), 
          database: str | None = kwargs.get(),  
          query: Mapping[str, Sequence[str] | str] | None = kwargs.get()]
+         self.api=url.set(i for i in rest)
         if !remote:
             pass 
         elif remote :
