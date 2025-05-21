@@ -205,11 +205,10 @@ class RemoteDatabase(Base):
           self.schemes=
             with self.engine(api echo=True) as engine:
                 if : 
+                    with self.meta as meta: 
                     
                 elif :  
-                    with session(engine) as session:
-                        session.add_all([i for i in self.schemes ])
-                        session.commit()
+                    with self.meta as meta:
     
     def _class_basename():
         val= self.drive=drivename +"_"+self.host=host 
