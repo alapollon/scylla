@@ -168,17 +168,13 @@ class Base(declarative_base):
         update=Column()     
     _primary_schema_=Primary_Table_Schema
     def _init_sqlite_tables():
-        session=self.session
-        engine=self.engine(url.set(drivername=drivename,database=name) echo)
-        self.meta.create_all(engine)
-        if session()
+       with self.meta as meta: 
+        pass 
     init_contemporary_data_tables=_init_sqlite_tables()
     def _init_database_tables(self, *args):
         def scheme():
             pass
-        with self.session as session:
-            session.add_all([])
-            session.commit()
+        with self.meta as meta: 
         pass
     create_all_tables=_init_database_tables()
 
