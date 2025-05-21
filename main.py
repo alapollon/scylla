@@ -227,15 +227,15 @@ class Userdatabase(thread.threadding, type):
         namespace=type.__prepare__(cls, ())
         args= list(inspect.signature(cls).parameters)
         signature=','.join('{self.%s!r}'% arg for arg in args)
-        title='def __call__(cls, remote: Boolean, **kwargs, ) -> type:\n'
-        title+=f'  return super().__call__(remote: Boolean, **kwargs)'
+        code='def __call__(cls, remote: Boolean, **kwargs, ) -> :\n'
+        code+=f'  return super().__call__(remote: Boolean, **kwargs)'
         header={}
         exec(
             title,
             header)
         return cls._registry[][name]=cls
    def __new__(meta, clsname, bases, methods):
-        namespace['_driver_nd_host_url_']= 
+        namespace[f'{}']= 
         return super().__new__(scm, name, bases, namespace)
     @classmethod
     def factor():
