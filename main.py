@@ -1,24 +1,5 @@
 #
 from os import path
-from sqlalchemy import (
-Column,
- Integer, 
- String, 
- MetaData, 
- Table, 
- Select,
-ForeignKey, 
-Binary,
- LargeBinary, 
- Boolean )
-from sqlalchemy.engine import create_engine, URL as url 
-from sqlalchemy.orm import ( declarative_base, 
-registry, 
-sessionmaker, 
-Session, 
-mapped_column, 
-mapped, 
-relationship)
 from sqlalchemy.orm.decl_api import DeclarativeMeta 
 from pandas import DataFrame, MultiIndex, Series
 import ssl 
@@ -52,10 +33,12 @@ PATH = (
     Log= '/var/log/scylla/*')
 
 async def symbol():
+    join= os.path.abspath(os.path.dirname(__file__))
     def __init__(self):
-        with PATH as path
-            for i in path:
+        with PATH as those_paths
+            for i in those_paths:
                 os.path.add_arguemnt(i)
+    
     class Pipe: 
         def __slot__():
             pass
@@ -73,25 +56,77 @@ series=Series
 mi= MultiIndex
 
 from ss import StreamRequestHandler
-class DatabaseServer(StreamRequestHandler):
+class DatabaseServer(StreamRequestHandler, ):
     def __init__(self, time, publickey, secure_socket_layer_certificate):
-        self.database=()
+        self.database= 
+        self.time=
+        self.keys={}
         pass 
     @staticmethod 
     def _handle_(self,load):
         resp= 
-        if isinstance(self.req,socker.socket)
-            def stream(pay: None):
+        if isinstance(req,socker.socket)
+            def stream(pay: ):
                 self.req.sendall(pay)
             stream() 
         else:
             self.server.socket.sendto(resp())
             pass
 db=DatabaseServer
+
+
+async def handlr(func):
+    def handle():
+        
+        pass 
+    return handle
+
+
+from Queue import *
+
+def identity(variable):
+    return variable
+class Node():
+    def __init__(self, size, key=identity):
+        self._indicies_represent_edges=[] * d
+    def __len__(self,item):
+        return self._indicies_represent_edges.len 
+    def insert(self, item):
+        self._indicies_represent_edges[]=item
+  
+        
+
+
+from sqlalchemy import (
+Select,
+Model,
+Column,
+Integer, 
+String, 
+MetaData, 
+Table, 
+Select,
+ForeignKey, 
+Binary,
+LargeBinary, 
+Boolean,
+event as alchem_events )
+from sqlalchemy.orm import ( 
+declarative_base, 
+registry, 
+sessionmaker, 
+Session, 
+mapped_column, 
+mapped, 
+relationship,
+alliased,
+bundle)
+from sqlalchemy.engine import create_engine, URL as url 
 class Base(declarative_base):
     @declared_attr
-    def __init__(self):
-        self.engine= create_engine
+    def __init__(self, **kwargs):
+        self.api=url.set()
+        self.engine= create_engine( echo=True)
         self.orm= sessionmaker(bind=self.engine)
         self.session=Session
         self.meta= MetaData(bind=self.engine)
@@ -106,7 +141,7 @@ class Base(declarative_base):
         gatewayipv6= Column("gatway6",Binary(16), unique= True, primary_key=True, nullable=False) 
         gatewayname=Column("gatewayname",Binary(4), primary_key=False , nullable= True )
         domain=Column("Company", Binary(), unique=True, nullable=False )
-    _main_gateway_schema= Main_Remote_Gateway_Scheme
+   Main_Remote_Gateway_Scheme
     class Node_Edge_Scheme:
         __tablename__= "node_edge_scheme"
         mac_uuid: Mapped[]=Column("uuid",primary_key=True)
@@ -142,41 +177,95 @@ class Base(declarative_base):
     class Route_Table_Schema:
         __tablename__="route_schemes"
         gateway6: Mapped[]=mapped_column( Binary(), primary_key=True, nullable=False)
-        edges: Mapped[]=Column(Array(), nullable=False )
+        edges=Column(Array(), nullable=False )
         hosts=Column( Array(), primary_key=True, nullable=False )
         bgp=Column()
         hops=Column("hops", Binary(), primary_key=True, nullable=False)
+
+        def __init__(self, edges: list, ):
+            self.edges=edges
+
+        def _hash_host_over_edges():
+            pass
     _main_route_schema= Route_Table_Schema
     class Database_Table_Schema:
         __tablename__="database_routes_schema"
-        uuid=()
-        hostipv6=Column()
+        uuid=mapped_column()
+        hostipv6=Column("ipv6", Binary(), )
         sub=Column()
-        hostname=Column()
-        url=Column()
-        fitness=Column()
+        hostname=Column("url", Binary(), nullable=False)
+        url=Column("url", Binary(), nullable=False)
+        fitness=Column("fitness",Boolean(), nullable=False)
         masks=Column()
-    _database_table_schema= Database_Table_Schema
+        def __init__(self, host, url, **kwargs):
+            self.host=host
+            self.sub=
+            self.hostname=kwargs.get
+            self.url=url
+            self.fitness=kwargs.get
+            self.masks= 
+ 
     class Primary_Table_Schema:
         __tablename__ = "mac_table__schema"
         @mapper_registry.as_declarative()
         id=Column()
-        uuid=Column("uuid", Binary(),primary_key=True)
-        mac=Column("mac",Binary(16), primary_key=True)
+        uuid=Column("uuid", Binary(),primary_key=True, unique=True, nullable=False)
+        mac=Column("mac",Binary(16), primary_key=True, unique=True, )
         cidr=Column("cidr",Binary(2), nullable=True)
-        routes: []=mapped_column("edges",Array(), fore_key=True )
+        routes: []=mapped_column("edges",LargeBinary(), )
         update=Column()     
-    _primary_schema_=Primary_Table_Schema
-    def _init_sqlite_tables():
-       with self.meta as meta: 
+
+        def __init__(self, **kwargs):
+            self.mac=
+            self.cidr=cidr
+            self.routes=routes
+            self.update=update
+
+   class TableAlliases():
+        gatewaySchems=alliased(Main_Gateway_Scheme(),name="gatewaySchmes")
+        nodeSchemes=alliased(Node_Edge_Scheme(),name="nodeSchmes") 
+        portSchemes=alliased(Port_Services_Relationship(),name="portSchmes")
+        target=alliased(Kansas_Cinncinati__Schema(),name="kcSchmes")
+        route=alliased(Route_Table_Schema(),name="routeSchmes")
+        database=alliased(Database_Table_Schema(),name="dbSchmes")
+        mac=alliased(Primary_Table_Schema(),name="macSchmes")
         pass 
-    init_contemporary_data_tables=_init_sqlite_tables()
-    def _init_database_tables(self, *args):
-        def scheme():
+       
+   async def get(self, issue: str, **kwargs):
+            _order_stmt=select(kwargs.get).order_by(kwargs.get)
+            _joint_stmt=select(kwargs.get['']).join(kwargs.get['']).order_by(kwargs.get[''],kwargs.get[''])
+            _bundle_stmt=select(
+                Bundle(kwargs.get['']),
+                Bundle(kwargs.get[''])
+            ).join_from(kwargs.get[''])
+             await def query(stat)->:
+                return session.execute(stat)
+            if issue:
+                for index in query(_joint_stmt):
+                    yield index 
+            elif issue: 
+                for index in query(_bundle_stmt):
+                    yield index
+            elif issue:
+                for index in query(_order_stmt).all():
+                    yield index 
+    add=
+    commit= 
+    search=get()
+   def _init_databse(self):
+        orm=self.orm
+        session=self.session
+        meta=self.meta
+        engine=self.engine(self.api echo=True)
+        def _init_sqlite():
+            while !engine:
+                try: 
+                    session.get_transaction()
+                except :
+                    session.rollback()
+        def _init_postgres():
+            
             pass
-        with self.meta as meta: 
-        pass
-    create_all_tables=_init_database_tables()
 
     class Private: 
         @classmethod
@@ -185,86 +274,60 @@ class Base(declarative_base):
             pass
 
 class LocalDatabase(Base):
-    def __init__(self, api)
-        super().__init__():
-      with self.engine(api echo=True) as engine:
-            if engine: 
-               create_all_tables
-            else: 
-                with self.meta as meta:
-                    meta.create_all(engine)
-
+    def __init__(self, **kwargs)
+        if self.meta...: 
+        else: 
+             super().__init__(**kwargs):
       def _class_basename():
         val= self.drive=drivename +"_"+self.host=host 
         pass
 
+
     
 class RemoteDatabase(Base):
-    def __init__(self, api):
-         super().__init__()
-          self.schemes=
-            with self.engine(api echo=True) as engine:
-                if : 
-                    with self.meta as meta: 
-                    
-                elif :  
-                    with self.meta as meta:
-    
+    def __init__(self, **kwargs):
+         super().__init__(**kwargs)
+        
     def _class_basename():
         val= self.drive=drivename +"_"+self.host=host 
         pass
 
-    def _link_with_remote():
-        with db()._handle_() as handle:
-            if handle
-        pass
 
     
 class Userdatabase(thread.threadding, type):
     _registry= { }
     items=t.__bases__()
-    def __init_subclass(cls,, *args: string):
+    def __init_subclass(cls, , **kwargs: string):
         namespace=type.__prepare__(cls, ())
         args= list(inspect.signature(cls).parameters)
         signature=','.join('{self.%s!r}'% arg for arg in args)
-        code='def __call__(cls, remote: Boolean, **kwargs, ) -> :\n'
-        code+=f'  return super().__call__(remote: Boolean, **kwargs)'
+        code='def __call__(cls, , ) -> type:\n'
+        code+=f'  return super().__new__(,,,,)'
         header={}
         exec(
-            title,
+            code,
             header)
         return cls._registry[][name]=cls
-   def __new__(meta, clsname, bases, methods):
+   def __get__(meta, clsname, bases, methods):
         namespace[f'{}']= 
-        return super().__new__(scm, name, bases, namespace)
+        return 
     @classmethod
     def factor():
         pass
+
+    async def _search_():
+        pass 
+      
+   
 class ProductDatabase( metaclass=Userdatbase):
     def __init__(remote: Boolean, **kwargs):
-        self.rest=[
-        drivername: str = kwargs.get(), 
-        username: str | None = kwargs.get(),
-         password: str | None = kwargs.get(), 
-         host: str = kwargs.get(), 
-         port: int | None = kwargs.get(), 
-         database: str | None = kwargs.get(),  
-         query: Mapping[str, Sequence[str] | str] | None = kwargs.get()]
-         self.api=url.set(i for i in rest)
         if !remote:
             pass 
         elif remote :
             pass
         else: 
            pass 
-
-    def _data_():
-        =[]
-        pass
-
-    add=
-    commit= 
-    search= 
+   
 
 class IndividualFactorDistribution:
     def __init__(self):
