@@ -12,8 +12,10 @@ import atexit
 import sqlite3 
 import logging
 import functools
+import nmap
 import scapy.all as cap
 import socketserver as ss
+import struct
 import asyncio as sync 
 import argparse
 import string
@@ -32,18 +34,27 @@ PATH = (
     Keys= '~/.ssh/*',
     Log= '/var/log/scylla/*')
 
-async def symbol():
-    join= os.path.abspath(os.path.dirname(__file__))
-    def __init__(self):
+class SystemsProgramming:
+    def __init__(self, file_data ):
+        self.add_file_body= file 
         with PATH as those_paths
             for i in those_paths:
                 os.path.add_arguemnt(i)
-    
-    class Pipe: 
-        def __slot__():
-            pass
-
-
+    async def symbol():
+        parent, child= socket.socketpair()
+        pid=os.fork()
+        if pid is ...: 
+            child.close()
+            parent.sendall
+            res=parent.recv()
+            return res
+        else: 
+            jitter=time.time()*1000.0
+            msg=
+            while ms>= ...: 
+                child.close()
+    def __slot__():
+        pass
 
 t=threading.Event()
 que=netfilterqueqe.NetfilterQueqe()
@@ -55,15 +66,23 @@ df=DataFrame
 series=Series
 mi= MultiIndex
 
-from ss import StreamRequestHandler
-class DatabaseServer(StreamRequestHandler, ):
-    def __init__(self, time, publickey, secure_socket_layer_certificate):
+from ss import StreamRequestHandler, DatagramRequestHandler
+class DatabaseServer(StreamRequestHandler, DatagramRequestHandler):
+    def __init__(self, time, publickey, secure_socket_layer_certificate, *args):
+        local, port=args 
+        self.origin=(local,port)
         self.database= 
-        self.time=
+        self.timedate=
         self.keys={}
         pass 
-    @staticmethod 
-    def _handle_(self,load):
+    @classmethod
+    def _inbound_queue(): 
+        pass
+
+    @staticmethod
+    def handlr(self,load,time=self.timedate):
+        def timecount():
+            pass
         resp= 
         if isinstance(req,socker.socket)
             def stream(pay: ):
@@ -72,40 +91,51 @@ class DatabaseServer(StreamRequestHandler, ):
         else:
             self.server.socket.sendto(resp())
             pass
-db=DatabaseServer
-
-
-async def handlr(func):
-    def handle():
         
-        pass 
-    return handle
-
-
+db=DatabaseServer
+async def database_handle(func):
+    db.handlr()
+    pass
 from Queue import *
 
 def identity(variable):
     return variable
 class Node():
     def __init__(self, size, key=identity):
-        self._indicies_represent_edges=[] * d
+        self._edges= [] * d
     def __len__(self,item):
         return self._indicies_represent_edges.len 
     def insert(self, item):
         self._indicies_represent_edges[]=item
   
         
+class IndividualFactorDistribution:
+    def __init__(self, *args):
+        self.idf= DataFrame( [], columns = [ i for i in args.get['columns'] ])
 
+class MultiFactorDistribution:
+    def __init__(self):
+        self.mfd = pass 
 
+class FrameworkData(IndividualFactorDistribution, MultiFactorDistribution):
+    def __init__(self):
+        self.node=
+        self.edge=
+        self.host=
+        self.port=
+        return 0
+from typing import Optionals
 from sqlalchemy import (
 Select,
 Model,
 Column,
-Integer, 
+Integer,
+BigIntger
 String, 
 MetaData, 
 Table, 
 Select,
+PrimaryKey,
 ForeignKey, 
 Binary,
 LargeBinary, 
@@ -123,28 +153,50 @@ alliased,
 bundle)
 from sqlalchemy.engine import create_engine, URL as url 
 class Base(declarative_base):
+    type_annotation_map={
+        int:BigIntger()
+        uuid:Binary(),
+        gateway4:Binary(4),
+        gateway6:Binary(16),
+        hostname:Binary(),
+        hops:Integer()
+        edges:LargeBinary(),
+        fitness:Boolean(),
+    }
     @declared_attr
-    def __init__(self, **kwargs):
-        self.api=url.set()
+    def __init__(self):
+        self.api=url
         self.engine= create_engine( echo=True)
         self.orm= sessionmaker(bind=self.engine)
         self.session=Session
         self.meta= MetaData(bind=self.engine)
-        self.arrange=registry()
+        self.imperative_mapper=registry(self.meta=self.meta)
 
     class Main_Gateway_Scheme:
         __tablename__= "main_gateway__scheme"
-        mac_uuid: []= mapped_column("uuid",Binary(), unique=True, nullable=False)
-        gate_cidr= mapped_column("gateway",primary_key=True, nullable=False)
-        gatewayipv4=Column("gateway4",Binary(4),primary_key=True, nullable=True)
+        mac_uuid: Mapped[Binary["Primary_Table_Schema"]]= relationship(back_populates="uuid")
+        mac: Mapped[Binary["Primary_Table_Schema"]]= elationship(back_populates="")
+        gatewayipv6= mapped_column("gatway6",Binary(16), PrimaryKey=True, unique= True, primary_key=True, nullable=False) 
+        gate_cidr= mapped_column("gateway", PrimaryKey=True, nullable=False)
+        gatewayipv4=Column("gateway4",Binary(4),PrimaryKey=True, nullable=True)
         hops=Column("hops", Binary(), nullable=False)
-        gatewayipv6= Column("gatway6",Binary(16), unique= True, primary_key=True, nullable=False) 
         gatewayname=Column("gatewayname",Binary(4), primary_key=False , nullable= True )
         domain=Column("Company", Binary(), unique=True, nullable=False )
-   Main_Remote_Gateway_Scheme
+        def __init__(self,):
+            cidr, gateway4, gateway6, hops, 
+            self.cidr=cidr
+            self.hops=hops 
+            self.gateway4=gateway4|None 
+            self.gateway6=gateway6|None
+    class Port_Service_Schemes: 
+        __tablename__="port_services"
+        services=mapped_column()
+        oem_ports=mapped_column()
+        true=
+        false=
     class Node_Edge_Scheme:
         __tablename__= "node_edge_scheme"
-        mac_uuid: Mapped[]=Column("uuid",primary_key=True)
+        mac_uuid: Mapped[]= relationship
         mac=Column("mac",Binary(),primary_key=True)
         hops=Column("hops",Binary())
         cidr=Column("cidr",Binary(2),foreign_key=True,nullable=False)
@@ -153,7 +205,6 @@ class Base(declarative_base):
         gateway: Mapped[]=mapped_column("gatewayipv6",Binary(16),foreign_key_key=True, nullable= False)
         ifgateway=Column("isgateway",Boolean(), primary_key=True, nullable=False)
         bgp=Column()
-    _edge_schema= Node_Port_Map_Scheme
     class Port_Services_Relationship:
         __tablename__= "service_map_relationship"
         device_uuid: Mapped []=mapped_column("uuid",Binary(), primary_key=True)
@@ -173,28 +224,29 @@ class Base(declarative_base):
         bgp=Column("bgp",Boolean(),)
         edges=Column("edges",Array(), nullable=False )
         port=("map",Array(), nullable=False)
-    _kill_chain_schema= Kansas_Cinncinati_Schema
+        def __init__(self, *args)
+            targetipv6, mac, hostname=args
+            self.targetipv6=targetipv6
+            self.hostname=hostname
+            self.mac=mac 
     class Route_Table_Schema:
         __tablename__="route_schemes"
         gateway6: Mapped[]=mapped_column( Binary(), primary_key=True, nullable=False)
-        edges=Column(Array(), nullable=False )
-        hosts=Column( Array(), primary_key=True, nullable=False )
+        edges: Mapped[]=mapped_column(LargeBinary(), nullable=False )
+        hosts=Column(Integer(), primary_key=True, nullable=False )
         bgp=Column()
         hops=Column("hops", Binary(), primary_key=True, nullable=False)
-
         def __init__(self, edges: list, ):
             self.edges=edges
-
         def _hash_host_over_edges():
             pass
-    _main_route_schema= Route_Table_Schema
     class Database_Table_Schema:
         __tablename__="database_routes_schema"
-        uuid=mapped_column()
+        uuid=relationship()
         hostipv6=Column("ipv6", Binary(), )
         sub=Column()
         hostname=Column("url", Binary(), nullable=False)
-        url=Column("url", Binary(), nullable=False)
+        url=mapped_column("url", Binary(), nullable=False)
         fitness=Column("fitness",Boolean(), nullable=False)
         masks=Column()
         def __init__(self, host, url, **kwargs):
@@ -204,67 +256,70 @@ class Base(declarative_base):
             self.url=url
             self.fitness=kwargs.get
             self.masks= 
- 
     class Primary_Table_Schema:
         __tablename__ = "mac_table__schema"
-        @mapper_registry.as_declarative()
+        
         id=Column()
         uuid=Column("uuid", Binary(),primary_key=True, unique=True, nullable=False)
-        mac=Column("mac",Binary(16), primary_key=True, unique=True, )
+        hops=Column("")
+        mac=mapped_column("mac",Binary(16), primary_key=True, unique=True, )
+        latency=Column()
         cidr=Column("cidr",Binary(2), nullable=True)
-        routes: []=mapped_column("edges",LargeBinary(), )
         update=Column()     
-
         def __init__(self, **kwargs):
             self.mac=
             self.cidr=cidr
             self.routes=routes
             self.update=update
 
-   class TableAlliases():
-        gatewaySchems=alliased(Main_Gateway_Scheme(),name="gatewaySchmes")
-        nodeSchemes=alliased(Node_Edge_Scheme(),name="nodeSchmes") 
-        portSchemes=alliased(Port_Services_Relationship(),name="portSchmes")
-        target=alliased(Kansas_Cinncinati__Schema(),name="kcSchmes")
-        route=alliased(Route_Table_Schema(),name="routeSchmes")
-        database=alliased(Database_Table_Schema(),name="dbSchmes")
-        mac=alliased(Primary_Table_Schema(),name="macSchmes")
-        pass 
+    
+    gateway_table=alliased(Main_Gateway_Scheme(),name="gatewaySchmes")
+    node_table=alliased(Node_Edge_Scheme(),name="nodeSchmes") 
+    port_table=alliased(Port_Services_Relationship(),name="portSchmes")
+    target_table=alliased(Kansas_Cinncinati__Schema(),name="kcSchmes")
+    route_table=alliased(Route_Table_Schema(),name="routeSchmes")
+    database_table=alliased(Database_Table_Schema(),name="dbSchmes")
+    mac_table=alliased(Primary_Table_Schema(),name="macSchmes")
        
    async def get(self, issue: str, **kwargs):
+            table_2d_df=DataFrame
+            table_3d_mi=MultiIndex
+
             _order_stmt=select(kwargs.get).order_by(kwargs.get)
             _joint_stmt=select(kwargs.get['']).join(kwargs.get['']).order_by(kwargs.get[''],kwargs.get[''])
             _bundle_stmt=select(
                 Bundle(kwargs.get['']),
                 Bundle(kwargs.get[''])
             ).join_from(kwargs.get[''])
-             await def query(stat)->:
-                return session.execute(stat)
-            if issue:
-                for index in query(_joint_stmt):
-                    yield index 
-            elif issue: 
-                for index in query(_bundle_stmt):
-                    yield index
-            elif issue:
-                for index in query(_order_stmt).all():
-                    yield index 
-    add=
-    commit= 
-    search=get()
-   def _init_databse(self):
+             def query(stat)->:
+               return enumerate.session.execute(stat)
+
+            pull=query       
+            if issue == ".joint":
+                pull(_joint_stmt)
+                return df
+            elif issue==".joint": 
+                query(_bundle_stmt):
+                return
+            elif issue=".joint":
+                query(_order_stmt).all():
+            
+   def _init_databse(self, *args):
+        driver, 
         orm=self.orm
         session=self.session
         meta=self.meta
-        engine=self.engine(self.api echo=True)
+        engine=self.engine(self.api.set() echo=True)
         def _init_sqlite():
-            while !engine:
+            while engine:
                 try: 
                     session.get_transaction()
                 except :
                     session.rollback()
         def _init_postgres():
-            
+            imperative_mapper.map_imperatively(
+
+            )
             pass
 
     class Private: 
@@ -329,21 +384,6 @@ class ProductDatabase( metaclass=Userdatbase):
            pass 
    
 
-class IndividualFactorDistribution:
-    def __init__(self):
-        self.idf= DataFrame( [], columns = [ 'destination' , 'fake_origin', ' real_origin' ])
-
-class MultiFactorDistribution:
-    def __init__(self):
-        self.mfd = Series 
-
-class FrameworkData(IndividualFactorDistribution, MultiFactorDistribution):
-    def __init__(self):
-        self.node=
-        self.edge=
-        self.host=
-        self.port=
-        return 0
 
 product = ProductDatabase()
 index = FrameworkData()
