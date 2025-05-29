@@ -299,7 +299,7 @@ class Base(declarative_base):
                 Bundle(kwargs.get[''])
             ).join_from(kwargs.get[''])
              def query(stat)->:
-                if meta :
+                if meta:
                     return enumerate.session.execute(stat)
             pull=query       
             if issue == ".joint":
