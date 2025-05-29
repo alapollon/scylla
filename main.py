@@ -7,6 +7,7 @@ import time
 import numpy as npy 
 import threading
 import netfilterqueqe
+import queue
 import sys 
 import atexit
 import sqlite3 
@@ -56,7 +57,7 @@ class SystemsProgramming:
     def __slot__():
         pass
 
-t=threading.Event()
+event=threading.Event()
 que=netfilterqueqe.NetfilterQueqe()
 local_server_local_address= 
 sql=sqlite3
@@ -75,7 +76,6 @@ class DatabaseServer(StreamRequestHandler, DatagramRequestHandler):
         self.timedate=
         self.keys={}
         pass 
-    @classmethod
     def _inbound_queue(): 
         pass
 
@@ -96,7 +96,12 @@ db=DatabaseServer
 async def database_handle(func):
     db.handlr()
     pass
-from Queue import *
+
+handlr_thread=thread.threadding(
+    name="outbound data pipeline ",
+    target=database_handle,
+    args=(event, )
+)
 
 def identity(variable):
     return variable
@@ -107,7 +112,7 @@ class Node():
         return self._indicies_represent_edges.len 
     def insert(self, item):
         self._indicies_represent_edges[]=item
-  
+        pass 
         
 class IndividualFactorDistribution:
     def __init__(self, *args):
@@ -118,14 +123,12 @@ class MultiFactorDistribution:
         self.mfd = pass 
 
 class FrameworkData(IndividualFactorDistribution, MultiFactorDistribution):
-    def __init__(self):
-        self.node=
-        self.edge=
-        self.host=
-        self.port=
-        return 0
+    def __init__(self, stack):
+        super().__init__()
+        pass 
 from typing import Optionals
 from sqlalchemy import (
+create_engine,
 Select,
 Model,
 Column,
@@ -147,7 +150,7 @@ registry,
 sessionmaker, 
 Session, 
 mapped_column, 
-mapped, 
+Mapped, 
 relationship,
 alliased,
 bundle)
@@ -155,10 +158,10 @@ from sqlalchemy.engine import create_engine, URL as url
 class Base(declarative_base):
     type_annotation_map={
         int:BigIntger()
-        uuid:Binary(),
-        gateway4:Binary(4),
-        gateway6:Binary(16),
-        hostname:Binary(),
+        uuid:String(),
+        gateway4:String(4),
+        gateway6:String(16),
+        hostname:String(),
         hops:Integer()
         edges:LargeBinary(),
         fitness:Boolean(),
@@ -174,13 +177,13 @@ class Base(declarative_base):
 
     class Main_Gateway_Scheme:
         __tablename__= "main_gateway__scheme"
-        mac_uuid: Mapped[Binary["Primary_Table_Schema"]]= relationship(back_populates="uuid")
-        mac: Mapped[Binary["Primary_Table_Schema"]]= elationship(back_populates="")
-        gatewayipv6= mapped_column("gatway6",Binary(16), PrimaryKey=True, unique= True, primary_key=True, nullable=False) 
-        gate_cidr= mapped_column("gateway", PrimaryKey=True, nullable=False)
-        gatewayipv4=Column("gateway4",Binary(4),PrimaryKey=True, nullable=True)
-        hops=Column("hops", Binary(), nullable=False)
-        gatewayname=Column("gatewayname",Binary(4), primary_key=False , nullable= True )
+        mac_uuid: Mapped[String["Primary_Table_Schema"]]=relationship(back_populates="uuid")
+        mac: Mapped[String["Primary_Table_Schema"]]=relationship(back_populates="mac")
+        gatewayipv6=mapped_column("gatway6",String(), PrimaryKey=True, unique= True, nullable=False) 
+        cidr=mapped_column("gateway", Integer(),PrimaryKey=True, nullable=False)
+        gatewayipv4=Column("gateway4",String(), nullable=True)
+        hops=Column("hops", Integer(), nullable=False)
+        gatewayname=Column("dns",String(), primary_key=False , nullable= True )
         domain=Column("Company", Binary(), unique=True, nullable=False )
         def __init__(self,):
             cidr, gateway4, gateway6, hops, 
@@ -196,22 +199,28 @@ class Base(declarative_base):
         false=
     class Node_Edge_Scheme:
         __tablename__= "node_edge_scheme"
-        mac_uuid: Mapped[]= relationship
-        mac=Column("mac",Binary(),primary_key=True)
-        hops=Column("hops",Binary())
-        cidr=Column("cidr",Binary(2),foreign_key=True,nullable=False)
-        services=Column("open_services",LargeBinary(),nullable=False)
-        port=Column("port",Binary(),nullable=True)
-        gateway: Mapped[]=mapped_column("gatewayipv6",Binary(16),foreign_key_key=True, nullable= False)
+        mapid=Column("id", Integer(), unique=True, nullable=False)
+        uuid: Mapped[]= relationship(back_populates=)
+        mac: Mapped[String[]]=relationship(back_populates="")
+        gateway: Mapped[]=relationship(back_populates=)
+        edges: Mapped[LargeBinary[]]=mapped_column()
+        host_count=mapped_column("hosts", BigIntger(), nullable=True, ForeignKey=True)
+        nodes_count=mapped_column("nodes", BigIntger(), nullable=True)
         ifgateway=Column("isgateway",Boolean(), primary_key=True, nullable=False)
         bgp=Column()
-    class Port_Services_Relationship:
+    class Port_Services_Relationship_Scheme:
         __tablename__= "service_map_relationship"
-        device_uuid: Mapped []=mapped_column("uuid",Binary(), primary_key=True)
-        gateway=Column("gateway",Binary(16),primary_key=True)
-        services=Column("array", LargeBinary(), nullable=False)
-        nodes: Mapped[]=Column("edges", LargeBinary(), nullable=False)
-        hostipv6=Column("hostipv6",primary_key=True, nullable=False)
+        uuid: Mapped []=mapped_column("uuid",Binary(), primary_key=True)
+        gateway=Column("gateway",Binary(16),PrimaryKey=True)
+        node=mapped_column("node", Boolean(),PrimaryKey)
+        targetipv6=Column("targetipv6",primary_key=True, nullable=False)
+        services=Column("servicesList", LargeBinary(), nullable=False)
+        edges: Mapped[[]]=relationship
+        def __init__(self,*args):
+            array, node, 
+            self.service_map=array
+            self.nodeif=node 
+            self.ed
     class Kansas_Cinncinati__Schema:
         __tablename__="kansas_cincinnati__scheme"
         uuid: Mapped[]=Column("uuid",unique=True,primary_key=True,nullable=True)
@@ -219,7 +228,7 @@ class Base(declarative_base):
         hostmac=Column(nullable=True)
         hostipv6=Column()
         gatecid=Column("cidr",Binary(), nullable=False  )
-        gateway=Column()
+        gateway6=Column()
         headgateway6: Mapped[]=mapped_column(Primary_key=True, nullable=False )
         bgp=Column("bgp",Boolean(),)
         edges=Column("edges",Array(), nullable=False )
@@ -231,9 +240,10 @@ class Base(declarative_base):
             self.mac=mac 
     class Route_Table_Schema:
         __tablename__="route_schemes"
+        mapid=Column()
+        target: Mapped[[]]=mapped_column()
         gateway6: Mapped[]=mapped_column( Binary(), primary_key=True, nullable=False)
         edges: Mapped[]=mapped_column(LargeBinary(), nullable=False )
-        hosts=Column(Integer(), primary_key=True, nullable=False )
         bgp=Column()
         hops=Column("hops", Binary(), primary_key=True, nullable=False)
         def __init__(self, edges: list, ):
@@ -243,7 +253,7 @@ class Base(declarative_base):
     class Database_Table_Schema:
         __tablename__="database_routes_schema"
         uuid=relationship()
-        hostipv6=Column("ipv6", Binary(), )
+        host6: Mapped[Opti]=Column("ipv6", Binary(), )
         sub=Column()
         hostname=Column("url", Binary(), nullable=False)
         url=mapped_column("url", Binary(), nullable=False)
@@ -258,21 +268,20 @@ class Base(declarative_base):
             self.masks= 
     class Primary_Table_Schema:
         __tablename__ = "mac_table__schema"
-        
-        id=Column()
-        uuid=Column("uuid", Binary(),primary_key=True, unique=True, nullable=False)
-        hops=Column("")
-        mac=mapped_column("mac",Binary(16), primary_key=True, unique=True, )
+        mapid=Column()
+        uuid=mapped_column("uuid", String(),PrimaryKey=True, unique=True, nullable=False)
+        hops=Column("Hops", Integer(), )
+        mac: Mapped[Optional[str]]=mapped_column( PrimaryKey=True, unique=True, )
         latency=Column()
-        cidr=Column("cidr",Binary(2), nullable=True)
-        update=Column()     
+        zone: Mapped[Optional[]]=mapped_column(PrimaryKey=True, unique=False, nullable=True)
+        cidr=mapped_column("cidr",Integer(), nullable=False)
+        update: Mapped[]=Column()     
         def __init__(self, **kwargs):
             self.mac=
             self.cidr=cidr
-            self.routes=routes
+            self.latency=latency
+            self.zone=zone
             self.update=update
-
-    
     gateway_table=alliased(Main_Gateway_Scheme(),name="gatewaySchmes")
     node_table=alliased(Node_Edge_Scheme(),name="nodeSchmes") 
     port_table=alliased(Port_Services_Relationship(),name="portSchmes")
@@ -282,9 +291,7 @@ class Base(declarative_base):
     mac_table=alliased(Primary_Table_Schema(),name="macSchmes")
        
    async def get(self, issue: str, **kwargs):
-            table_2d_df=DataFrame
-            table_3d_mi=MultiIndex
-
+            work=FrameworkData
             _order_stmt=select(kwargs.get).order_by(kwargs.get)
             _joint_stmt=select(kwargs.get['']).join(kwargs.get['']).order_by(kwargs.get[''],kwargs.get[''])
             _bundle_stmt=select(
@@ -292,8 +299,8 @@ class Base(declarative_base):
                 Bundle(kwargs.get[''])
             ).join_from(kwargs.get[''])
              def query(stat)->:
-               return enumerate.session.execute(stat)
-
+                if meta :
+                    return enumerate.session.execute(stat)
             pull=query       
             if issue == ".joint":
                 pull(_joint_stmt)
@@ -314,13 +321,20 @@ class Base(declarative_base):
             while engine:
                 try: 
                     session.get_transaction()
-                except :
+                except ...:
                     session.rollback()
         def _init_postgres():
             imperative_mapper.map_imperatively(
 
             )
-            pass
+            while engine:
+                try:
+                    meta.create_all(engine)
+                except ...: 
+                    if err: 
+                        session.rollback()
+                    pass 
+                pass
 
     class Private: 
         @classmethod
@@ -346,8 +360,6 @@ class RemoteDatabase(Base):
     def _class_basename():
         val= self.drive=drivename +"_"+self.host=host 
         pass
-
-
     
 class Userdatabase(thread.threadding, type):
     _registry= { }
@@ -373,7 +385,6 @@ class Userdatabase(thread.threadding, type):
     async def _search_():
         pass 
       
-   
 class ProductDatabase( metaclass=Userdatbase):
     def __init__(remote: Boolean, **kwargs):
         if !remote:
@@ -452,12 +463,12 @@ def spoof(packet):
             packet.set_payload(str(cap_packet))
 
 
-e= threading.Event()
+
 
 scan_input_thread = threading.Thread(
     name=' scanning user input %()s'
     target = scan_prompt_data,
-    args=(t,)
+    args=(e,)
 )
 
 process_spoof_thread = threading.Thread(
