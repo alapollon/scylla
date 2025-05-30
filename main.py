@@ -297,6 +297,15 @@ class Primary_Table_Schema:
         self.latency=latency
         self.zone=zone
         self.update=update
+
+gateways=alliased(Main_Gateway_Scheme(),name="gatewaySchmes")
+nodes=alliased(Node_Edge_Scheme(),name="nodeSchmes") 
+ports=alliased(Port_Services_Relationship(),name="portSchmes")
+targets=alliased(Kansas_Cinncinati__Schema(),name="kcSchmes")
+routes=alliased(Route_Table_Schema(),name="routeSchmes")
+databases=alliased(Database_Table_Schema(),name="dbSchmes")
+mac=alliased(Primary_Table_Schema(),name="macSchmes")
+
 async def get(self, issue: str, **kwargs):
         work=FrameworkData
         _order_stmt=select(kwargs.get).order_by(kwargs.get)
