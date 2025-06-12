@@ -10,7 +10,7 @@ import sys, atextit, os, logging, argparse, sqlite3
 logging.basicConfig(
     level=logging.DEBUG,
     format='(%(Appname)s %(threadName)-10s) %(message)s',
-    filename="sycllanetwork.log"
+    filename="sycllanet.log"
 )
 
 PATH = (
@@ -415,10 +415,13 @@ def sniff_sftp(packet, *args):
     user= re.findall(f'(?i)USER(.*)', raw)
     password= re.findall(f'(?i)PASS(.*)',raw)
     if user & password:
-        return sniffed_ftp_signal(data=[mac,outbound,inbound,user,pword])
-    elif !user: 
-        return sniffed_ftp_signal(data=['None',outbound,destination,'user','pword')
+        data=[mac,outbound,inbound,user,pword]
         pass
+    elif !user: 
+        data=['None',outbound,destination,'user','pword')
+        pass
+    while True:
+        sniffed_ftp_signal
         
 scan_input_thread = threading.Thread(
     name=' scanning user input %()s'
