@@ -1,32 +1,17 @@
 #
 from os import path
-from sqlalchemy.orm.decl_api import DeclarativeMeta 
+from sqlalchemy.orm.decl_api import DeclarativeMeta
+from bisect import bisect, insort, bisect_left,
 from pandas import DataFrame, MultiIndex, Series
-import ssl 
-import time
-import numpy as np
-import threading
-import netfilterqueqe
-import queue
-import sys 
-import atexit
-import sqlite3 
-import logging
-import functools
-import nmap
-import scapy.all as cap
-import socketserver as ss
-import struct
-import asyncio as sync 
-import argparse
-import string
-import ip 
+import time, numpy, threadding, netfilterqueqe, queue, asyncio, struct, string, ip, nmap, scapy
+import sys, atextit, os, logging, argparse, sqlite3
+
 
 logging.basicConfig(
     level=logging.DEBUG,
     format='(%(Appname)s %(threadName)-10s) %(message)s',
     filename="sycllanetwork.log"
-);
+)
 
 PATH = (
     Volumes= 'volumes/*',
@@ -37,74 +22,28 @@ PATH = (
 
 class OperatingSystemProgramming:
     def __init__(self, file_data ):
-        self.add_file_body= file 
-        with PATH as those_paths
             for i in those_paths:
                 os.path.add_arguemnt(i)
-    async def symbol():
-        parent, child= socket.socketpair()
-        pid=os.fork()
-        if pid is ...: 
-            child.close()
-            parent.sendall
-            res=parent.recv()
-            return res
-        else: 
-            jitter=time.time()*1000.0
-            msg=
-            while ms>= ...: 
-                child.close()
+                sleep(3)
+    def symbol():
+        pass
+        
     def __slot__():
         pass
 
+np=numpy
+worker=WorkerThread
 osi=OperatingSystemProgramming
 channel=netfilterqueqe.NetfilterQueqe()
 sql=sqlite3
-tex=atexit.register()
+tx=atexit
 narray=np.array
 df=DataFrame
 series=Series
 mi= MultiIndex
+concurrency=time. 
+socket_time_out_after=s.settimeout()
 
-from ss import StreamRequestHandler, DatagramRequestHandler
-link_stream=StreamRequestHandler
-link_datagram=DatagramRequestHandler
-class DatabaseServer():
-    def __init__(self, time, publickey, secure_socket_layer_certificate, *args):
-        local, port=args 
-        self.origin=(local,port)
-        self.database= 
-        self.timedate=
-        self.keys={}
-        pass 
-    @staticmethod
-    def handlr(self,load,time=self.timedate):
-        def timecount():
-            pass
-        resp= 
-        if isinstance(req,socker.socket)
-            def stream(pay: ):
-                self.req.sendall(pay)
-            stream() 
-        else:
-            self.server.socket.sendto(resp())
-            pass
-        
-db=DatabaseServer
-data_pipeline_event=threading.Event(
-
-)
-async def database_handle(func):
-     server=db.handlr()
-     while func is not None:
-        await server
-    return pass ...
-
-handlr_thread=thread.threadding(
-    name="outbound data pipeline ",
-    target=database_handle,
-    args=(event, )
-)
 
 def identity(variable):
     return variable
@@ -129,54 +68,10 @@ class FrameworkData(IndividualFactorDistribution, MultiFactorDistribution):
     def __init__(self, stack):
         super().__init__()
         pass 
-from sqlalchemy import (
-create_engine,
-Select,
-Model,
-Column,
-Integer,
-BigIntger
-String, 
-MetaData, 
-Table, 
-Select,
-PrimaryKey,
-ForeignKey, 
-Binary,
-LargeBinary, 
-Boolean,
-event as alchem_events )
-from sqlalchemy.orm import ( 
-declarative_base, 
-registry, 
-sessionmaker, 
-Session, 
-mapped_column, 
-Mapped, 
-relationship,
-alliased,
-bundle)
+from sqlalchemy.orm import mapped_column, Mapped, relationship, alliased,bundle
 from sqlalchemy.engine import URL as url 
 from typing import Optional
 api=url
-class Base(declarative_base):
-    type_annotation_map={
-        int:BigIntger()
-        uuid:String(),
-        gateway4:String(4),
-        gateway6:String(16),
-        hostname:String(),
-        hops:Integer()
-        edges:LargeBinary(),
-        fitness:Boolean(),
-    }
-    def __init__(self):
-        self.engine= create_engine( echo=True)
-        self.orm= sessionmaker(bind=self.engine)
-        self.session=Session
-        self.meta= MetaData(bind=self.engine)
-        self.imperative_mapper=registry(self.meta=self.meta)
-        pass
 @
 class Main_Gateway_Scheme:
     __tablename__= "main_gateway__scheme"
@@ -262,6 +157,14 @@ class Route_Table_Schema:
         pass
     def __init__(self, edges: list, ):
         self.edges=edges
+@
+class Dns_Server_Table_Schema:
+    __tablename__="dns_server_schema"
+    uid=
+    mac=
+    ip4=
+    ip6=
+    hostname= 
     
 @
 class Database_Table_Schema:
@@ -305,6 +208,28 @@ targets=alliased(Kansas_Cinncinati__Schema(),name="kcSchmes")
 routes=alliased(Route_Table_Schema(),name="routeSchmes")
 databases=alliased(Database_Table_Schema(),name="dbSchmes")
 mac=alliased(Primary_Table_Schema(),name="macSchmes")
+
+class NmapScanFucntions():
+    def __init__(self, target: list):
+       self._nItems=0
+       self.hosts=[None]*target 
+       self.nmap_channel=channel.bind()
+       while len(hosts)>=3: 
+            bisect.bisect_left
+       pass 
+    @classmethod 
+    def _delete_dst(self, dst):
+        lo=0 
+        hi=self._nItems-1
+        while lo<=hi:
+            mid=(lo+hi)//2
+            if self._a[mid]==item: 
+                list.remove(item)
+                bisect.
+            elif self._a[mid]<item:
+                pass
+    def _add_dst(self, dst):
+        bisect.
 
 async def get(self, issue: str, **kwargs):
         work=FrameworkData
@@ -365,15 +290,15 @@ class RemoteDatabase(Base):
          pass 
     def __repr__():
        pass
-class Userdatabase(type):
+class Userdatabase(type=GeneratorType):
     _registry= { }
     items=t.__bases__()
     def __init_subclass(cls, , **kwargs: string):
         namespace=type.__prepare__(cls, ())
         args= list(inspect.signature(cls).parameters)
         signature=','.join('{self.%s!r}'% arg for arg in args)
-        code='def __new__( ) -> type:\n'
-        code+=f'  return super().__init__()'
+        code='def __call__()'
+        code+=f'  '
         header={}
         exec(
             code,
@@ -418,22 +343,39 @@ def scan_prompt_data(self) -> :
         print(' continue  ')
     else :
         sys.stdout.write()
-
-class Nmap_Scanner_Server(thread.threadding):
-    def __init__(self,):
-       dst, option,  
-       self.hosts=[ i for in ]
-       self.nmap_channel=channel.bind
+f
+class NmapIntermediateScanServer(thread.Threadding):
+    def __init__(self, targets: list):
+        super().__init__()
+       self._nItems=0
+       self.hosts=[None]*target 
+       self.nmap_channel=channel.bind()
+       while len(hosts)>=3: 
+            bisect.bisect()
        pass 
-    @classmethod
-    def _delete_dst_property():
+    @classmethod 
+    def _delete_dst(self, *args):
+        delete, target= args 
+        lo=0 
+        hi=self._nItems-1
+        while lo<=hi:
+            mid=(lo+hi)//2
+            if self._a[mid]==item: 
+                list.remove(item)
+                bisect.
+            elif self._a[mid]<item:
+                pass
+    def _add_dst(self, ): 
         pass
+
+
 
 def whois(parameter:string,broadcast:string):
     async def _discover_host_on_edge():
-        from cap import ARP as arp
-        function_arp=apr(op=ARP.who_has,pdst=parameter)
-        function_broadcast=cap.Ether(dst=broadcast)
+        with cap.ARP as arp:
+            function_arp=apr(op=ARP.who_has,pdst=parameter)
+        with cap.Ether as ether: 
+            function_broadcast=ether(dst=broadcast)
         if broadcast is None:
             fire= function_arp/function_broadcast
             res=srp.(fire, timeout=1, verbose=False)[0]
@@ -463,6 +405,21 @@ def spoof(packet):
                 del packet[cap.UDP].chksum
                 del packet[cap.UDP].len 
             packet.set_payload(str(cap_packet))
+sniffed_ftp_signal=series(data=None , index=["mac","out","inbound","user","pword"])
+def sniff_sftp(packet, *args):
+    keys=[None]
+    mac= 
+    outbound=packet.getlayer(ip).src 
+    destination= packet.getlayer(ip).dst
+    raw= packet.sprintf (%Raw.loads&) 
+    user= re.findall(f'(?i)USER(.*)', raw)
+    password= re.findall(f'(?i)PASS(.*)',raw)
+    if user & password:
+        return sniffed_ftp_signal(data=[mac,outbound,inbound,user,pword])
+    elif !user: 
+        return sniffed_ftp_signal(data=['None',outbound,destination,'user','pword')
+        pass
+        
 scan_input_thread = threading.Thread(
     name=' scanning user input %()s'
     target = scan_prompt_data,

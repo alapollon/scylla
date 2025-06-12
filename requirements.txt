@@ -11,3 +11,4 @@ scapy            2.6.1
 six              1.17.0
 sortedcontainers 2.4.0
 tzdata           2025.2
+xapiparser       0.0.15
