@@ -1,6 +1,6 @@
 #
 
-import collections, server, ssl , time, threading, asyncio, functools, os, pathlib, logging, sys, atexit, sqlite3, netfilterqueqe, string, argsparse
+import collections, server, ssl , time, threading, asyncio, pysftp, getpass, os, pathlib, logging, sys, atexit, netfilterqueqe, string, argsparse
 from sqlalchemy import Column, Integer, String, MetaData, Table, Select
 from pandas import DataFrame, MultiIndex, Series
 from sqlalchemy.orm.decl_api import DeclarativeMeta 
@@ -16,7 +16,7 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='(%(Appname)s %(threadName)-10s) %(message)s',
     filename="sycllanetwork.log"
-);
+)
 
 PATH = (
     Volumes= 'volumes/*',
@@ -33,7 +33,6 @@ async def symbol():
     pass 
 
 t=threading.Event()
-local_server_local_address= 
 sql=sqlite3
 register=atexit.register()
 array=npy.array()
@@ -46,56 +45,56 @@ def query_statement():
 query=query_statement
 class Main_Gateway_Scheme(Base):
     __tablename__= "main_gateway__scheme"
-    mac_uuid: []= mapped_column("uuid",Binary(), unique=True, nullable=False)
-    gate_cidr= mapped_column("gateway",primary_key=True, nullable=False)
-    gatewayipv4=Column("gateway4",Binary(4),primary_key=True, nullable=True)
-    hops=Column("hops", Binary(), nullable=False)
-    gatewayipv6= Column("gatway6",Binary(16), unique= True, primary_key=True, nullable=False) 
-    gatewayname=Column("gatewayname",Binary(4), primary_key=False , nullable= True )
-    domain=Column("Company", Binary(), unique=True, nullable=False )
+    mac_uuid: []= Column("uuid", unique=True, nullable=False)
+    gate_cidr= Column("gateway",primary_key=True, nullable=False)
+    gatewayipv4=Column("gateway4",primary_key=True, nullable=True)
+    hops=Column("hops", nullable=False)
+    gatewayipv6= Column("gatway6", unique= True, primary_key=True, nullable=False) 
+    gatewayname=Column("gatewayname", primary_key=False , nullable= True )
+    domain=Column("Company", unique=True, nullable=False )
 
 class Node_Edge_Scheme(Base):
     __tablename__= "node_edge_scheme"
     mac_uuid: Mapped[]=Column("uuid",primary_key=True)
-    mac=Column("mac",Binary(),primary_key=True)
-    hops=Column("hops",Binary())
-    cidr=Column("cidr",Binary(2),foreign_key=True,nullable=False)
-    services=Column("open_services",LargeBinary(),nullable=False)
-    port=Column("port",Binary(),nullable=True)
-    gateway: Mapped[]=mapped_column("gatewayipv6",Binary(16),foreign_key_key=True, nullable= False)
-    ifgateway=Column("isgateway",Boolean(), primary_key=True, nullable=False)
+    mac=Column("mac",primary_key=True)
+    hops=Column("hops")
+    cidr=Column("cidr",foreign_key=True,nullable=False)
+    services=Column("open_services",nullable=False)
+    port=Column("port",nullable=True)
+    gateway: Mapped[]=Column("gatewayipv6",Binary(16),foreign_key_key=True, nullable= False)
+    ifgateway=Column("isgateway", primary_key=True, nullable=False)
     bgp=Column()
 
 class Port_Services(Base):
     __tablename__= "service_map_relationship"
-    device_uuid: Mapped []=mapped_column("uuid",Binary(), primary_key=True)
-    gateway=Column("gateway",Binary(16),primary_key=True)
-    services=Column("array", LargeBinary(), nullable=False)
-    nodes: Mapped[]=Column("edges", LargeBinary(), nullable=False)
+    device_uuid: Mapped []=Column("uuid",Binary(), primary_key=True)
+    gateway=Column("gateway",primary_key=True)
+    services=Column("array", nullable=False)
+    nodes: Mapped[]=Column("edges", nullable=False)
     hostipv6=Column("hostipv6",primary_key=True, nullable=False)
 class Kansas_Cinncinati__Schema(Base):
     __tablename__="kansas_cincinnati__scheme"
     uuid: Mapped[]=Column("uuid",unique=True,primary_key=True,nullable=True)
-    hops=Column(Binary(), nullable=False)
+    hops=Column( nullable=False)
     hostmac=Column(nullable=True)
     hostipv6=Column()
     gatecid=Column("cidr",Binary(), nullable=False  )
     gateway=Column()
-    headgateway6: Mapped[]=mapped_column(Primary_key=True, nullable=False )
+    headgateway6: Mapped[]=Column(Primary_key=True, nullable=False )
     bgp=Column("bgp",Boolean(),)
     edges=Column("edges",Array(), nullable=False )
     port=("map",Array(), nullable=False)
 class Route_Table_Schema(Base):
     __tablename__="route_schemes"
-    gateway6: Mapped[]=mapped_column( Binary(), primary_key=True, nullable=False)
-    edges: Mapped[]=Column(Array(), nullable=False )
-    hosts=Column( Array(), primary_key=True, nullable=False )
+    gateway6: Mapped[]=Column( primary_key=True, nullable=False)
+    edges: Mapped[]=Column( nullable=False )
+    hosts=Column( primary_key=True, nullable=False )
     bgp=Column()
-    hops=Column("hops", Binary(), primary_key=True, nullable=False)
+    hops=Column("hops", primary_key=True, nullable=False)
 
 class Dns_Table_Schema(Database):
     __tablename__=""
-    uuid: Mapped[]=relationship()
+    uuid: =relationship()
     mac: Mapped[]=Column("mac ", primary_key=True)
     def __init__(self, *args):
         hops, provider, isp
@@ -115,10 +114,10 @@ class Primary_Table_Schema(Database):
     __tablename__ = "mac_table__schema"
     @mapper_registry.as_declarative()
     id=Column()
-    uuid=Column("uuid", Binary(),primary_key=True)
-    mac=Column("mac",Binary(16), primary_key=True)
-    cidr=Column("cidr",Binary(2), nullable=True)
-    routes: []=mapped_column("edges",Array(), fore_key=True )
+    uuid=Column("uuid",primary_key=True)
+    mac=Column("mac", primary_key=True)
+    cidr=Column("cidr", nullable=True)
+    routes: []=Column("edges",  )
     update=Column()  
     def __init__(self):
         pass 
@@ -140,40 +139,20 @@ def init_new_database_tables_(*args):
 class LocalDatabase(Database):
     def __init__(self, drivename, username, password, host, port, database, query)
         super(Database).__init__()
-    pass 
+        pass 
      
     
 class RemoteDatabase(Database):
     def __init__(self, drivername, username, password, host, port, database, query):
          super(Database).__init__()
-          
-   
-    pass
+        pass
     
 class Userdatabase(LocalDatabase, RemoteDatabase):
-    def __init_subclass(self, *args):
-        if :
-            super(RemoteDatabase).__prepare__(cls, drivename, username, password, host, port, database, query)
-        elif: 
-            super(LocalDatabase).__init__( drivename, username, password, host, port, database, query)
-        else: 
-            raise 
-            pass 
-    def __init_subclass(cls,, *args: string):
-        namespace=type.__prepare__(cls, ())
-        args= list(inspect.signature(cls).parameters)
-        signature=','.join('{self.%s!r}'% arg for arg in args)
-        title='def __call__(cls, remote: Boolean, **kwargs, ) -> type:\n'
-        title+=f'  return super().__call__(remote: Boolean, **kwargs)'
-        header={}
-        exec(
-            title,
-            header)
-        return cls._registry[][name]=cls
-  
+   def __init__(self):
+       self.user_accounts=
 class ProductDatabase(contextlib):
     def __init__(self, api, func):
-       super(Userdatabase)...
+       super(Userdatabase)
         pass 
     add=
     commit= 
@@ -216,9 +195,9 @@ def scan_prompt_data(self) -> :
 
 def whois(target:any ,origin:string):
         from scapy.all import ARP, Ether, srp
+        config=
         function_arp=ARP 
         function_ether=Ether
-        
         while True:
             try: 
                 if target== type([]): 
@@ -229,16 +208,18 @@ def whois(target:any ,origin:string):
                     ARP(op=ARP.who_has, pdst=target)
                     Ether(dst=origin)
             except: 
-            if origin is None:
-                fire= function_arp/function_broadcast
-                res=srp(fire, timeout=1, verbose=False)[0]
-                return res[0][1].hwsrc
-    with index() as arp_index:
-        pass 
+                if origin is None:
+                    fire= function_arp/function_broadcast
+                    res=srp(fire, timeout=1, verbose=False)[0]
+                    return res[0][1].hwsrc
+   
 def sniff_sftp():
-    
-    pass 
-
+    def sftp_getfiles(*args):
+        username, password, hostname =args 
+        cnopts=
+        cnopts.hostkeys.load()
+        with pysftp.Connection() as sftp: 
+            pass
 def sniff_sshp():
     pass 
 
@@ -282,7 +263,6 @@ log = logging.getProcess()
 process = ( process_spoof_thread  )
 def main():
   arp_index
-
   parser.add_arguemnt('end', action=, default=False)
   parser.add_arguemnt('start', action=, default=True)
   parser.addd_arguement('get', action=, default=False)

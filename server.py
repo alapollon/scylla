@@ -1,17 +1,17 @@
-import ip, select, types, collections, socketserver, threading, netfilterqueqe, contextlib
+import nmap, ip, hpc, sqlite3, ssl, socket, collections, socketserver, threading, netfilterqueqe, contextlib
 from sqlalchemy.orm import declarative_base
-import socket
+
 
 protocol=socket
 context=contextlib
 
-class Downlink(SystemCall):
+class Downlink():
     def __init__(self,func):
         self.process=func 
-    def read(self,sched,task):
+    def read(self,hpc.sched,task):
         fileno=self.process.fileno()
         sched.readwait(task, fileno)
-class Uplink(SystemCall):
+class Uplink():
     def __init__(self,func):
         self.process=func
     def write(self, sched,task):
@@ -19,24 +19,42 @@ class Uplink(SystemCall):
         sched.writewait(task,fileno)
         
 class Coroutine(object):
-    def __init__(self,switch):
+    def __init__(self,switch,secure_layer):
         self.protocol=switch
+        self.security=secure_layer
+        self.secure_protocol=None
+        self.edge_weights=[None]
         pass
     def connect(self,addr):
-        yield Uplink(self.protocol)
+        if self.secure:
+            secure_socket=self.secure_protocol=ssl.wrap(self.protocol, server_side= True, certfile=self.security)
+            yield Uplink(secure_socket)
+        else: 
+            yield Uplink(self.protocol)
         yield self.protocol.connect(addr)
     def accept(self):
         yield Downlink(self.protocol)
-        conn, addr = self.protocol.accept()
+        if self.secure:
+            data=self.secure_protocol.read()
+        else:
+            conn, addr = self.protocol.accept()
+            pass 
+
     def send(self, data):
         while data:
-            ...
-            pass
-
+                yield Uplink(self.protocol)
+                nsent= self.protocol.send(data)
+                return len(data[nsent: ])
+                pass
+    def datagram_receive(self, length):
+        yield Downlink(self.protocol)
+        yield self.protocl.recv(length)
+        pass
     def close(self):
         yield self.protocol.close()
         pass
 class Base(declarative_base):
+
     def __init__(self):
         super(context.AbstractAsyncContextManager).__init__()
         self.engine= create_engine
@@ -47,26 +65,20 @@ class Base(declarative_base):
 
 
 class Database(Base):
-    def __init__(self, api, time, publickey, secure_socket_layer_certificate):
-        self.database=()
-        if api== ip:
-            self.switch=protocol.socket(family= , type=)
+    def __init__(self,  secure_socket_layer_certificate):
+        super(Base).__init__(self, )
+        if :
+            self.switch=protocol()
+        elif
+            self.switch=Coroutine(protocol())
         else: 
-            self.switch=Coroutine(protocol.socket(family=, type=))
-        pass 
-    @staticmethod 
-    def _handle_(self,load):
-       pass
+            raise 
+    def call_forward(self,**kwargs):
+        with self.session as session:
+            pass
 
-    def call_forward():
+    def initialize(self, api):
+        self.engine(api)
         pass
 
-    def start():
-        pass
-
-def daemon_sniffer():
-    pass 
-
-def daemon_nmap():
-    pass 
 
