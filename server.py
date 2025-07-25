@@ -1,9 +1,35 @@
-import nmap, ip, hpc, sqlite3, ssl, socket, collections, socketserver, threading, netfilterqueqe, contextlib
+import protocol, ip, hpc, sqlite3, pysftp, getpass, ssl, socket, collections, socketserver, threading, netfilterqueqe, contextlib
 from sqlalchemy.orm import declarative_base
+from collections import namedtuple, defaultDict
 
-
-protocol=socket
+access=sockect
+dserver=socketserver
 context=contextlib
+interfaces_address={}
+
+class Securirty(ssl):
+    def __init__(self, args)
+        super().__init__(self)
+        self.path=args.get["path"]
+        self.user_inputed_psk=args.get["psk"]
+        self.pool=namedtuple('Certificates', 'root, userServer, remoteServer, dataServer, pki, ms')
+        pass
+    @classmethod
+    def initialize_certfications(self)
+        with self.path as ca:
+             if ca && os.path.isdir(ca):
+                while True:
+                    directory=os.listdir(ca)
+                    context.load_verify_locations(capath=directory.)
+                
+                        
+
+             elif ca && os.path.isfile(ca):
+                
+                    
+        pass
+    def check_certificates():
+        if path -s os.path.isdir()
 
 class Downlink():
     def __init__(self,func):
@@ -19,23 +45,24 @@ class Uplink():
         sched.writewait(task,fileno)
         
 class Coroutine(object):
-    def __init__(self,switch,secure_layer):
-        self.protocol=switch
-        self.security=secure_layer
-        self.secure_protocol=None
+    def __init__(self, switch, secure=False):
+        self.switch=switch
+        self.secure=secure
         self.edge_weights=[None]
         pass
-    def connect(self,addr):
+    def connect(self, target):
         if self.secure:
-            secure_socket=self.secure_protocol=ssl.wrap(self.protocol, server_side= True, certfile=self.security)
+            secure_socket=Security.wrap_socket(self.switch, server_side= True)
             yield Uplink(secure_socket)
         else: 
             yield Uplink(self.protocol)
         yield self.protocol.connect(addr)
     def accept(self):
-        yield Downlink(self.protocol)
+        yield Downlink(self.switch)
         if self.secure:
-            data=self.secure_protocol.read()
+            try:
+                data=self.secure_socket.read()
+            except:
         else:
             conn, addr = self.protocol.accept()
             pass 
@@ -46,39 +73,31 @@ class Coroutine(object):
                 nsent= self.protocol.send(data)
                 return len(data[nsent: ])
                 pass
-    def datagram_receive(self, length):
+    def receive(self):
         yield Downlink(self.protocol)
         yield self.protocl.recv(length)
         pass
     def close(self):
         yield self.protocol.close()
         pass
-class Base(declarative_base):
 
+class Base(declarative_base):
     def __init__(self):
-        super(context.AbstractAsyncContextManager).__init__()
         self.engine= create_engine
-        self.orm= sessionmaker(bind=self.engine)
         self.session=Session
         self.meta= MetaData(bind=self.engine)
         self.arrange=registry()
 
 
-class Database(Base):
-    def __init__(self,  secure_socket_layer_certificate):
-        super(Base).__init__(self, )
-        if :
-            self.switch=protocol()
-        elif
-            self.switch=Coroutine(protocol())
-        else: 
-            raise 
-    def call_forward(self,**kwargs):
-        with self.session as session:
-            pass
 
-    def initialize(self, api):
-        self.engine(api)
+class UserDatabase(Base):
+
+    super(Base)__init__()
+    def interpolate():
+
+        pass 
+    def big_data_search():
         pass
 
+    
 
