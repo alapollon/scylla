@@ -27,8 +27,6 @@ try:
         except ValueError:
             pass 
         return False
-except fileNotFoundError:
-    return False
-except Exception as e:
+except ( fileNotFoundError, Exception):
     return False
 
