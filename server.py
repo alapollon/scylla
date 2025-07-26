@@ -1,4 +1,4 @@
-import protocol, ip, hpc, sqlite3, pysftp, getpass, ssl, socket, collections, socketserver, threading, netfilterqueqe, contextlib
+import protocol, ip, hpc, sqlite3, pysftp, ssl, socket, collections, socketserver, threading, netfilterqueqe, contextlib
 from sqlalchemy.orm import declarative_base
 from collections import namedtuple, defaultDict
 
@@ -7,29 +7,6 @@ dserver=socketserver
 context=contextlib
 interfaces_address={}
 
-class Securirty(ssl):
-    def __init__(self, args)
-        super().__init__(self)
-        self.path=args.get["path"]
-        self.user_inputed_psk=args.get["psk"]
-        self.pool=namedtuple('Certificates', 'root, userServer, remoteServer, dataServer, pki, ms')
-        pass
-    @classmethod
-    def initialize_certfications(self)
-        with self.path as ca:
-             if ca && os.path.isdir(ca):
-                while True:
-                    directory=os.listdir(ca)
-                    context.load_verify_locations(capath=directory.)
-                
-                        
-
-             elif ca && os.path.isfile(ca):
-                
-                    
-        pass
-    def check_certificates():
-        if path -s os.path.isdir()
 
 class Downlink():
     def __init__(self,func):
@@ -68,14 +45,15 @@ class Coroutine(object):
             pass 
 
     def send(self, data):
-        while data:
-                yield Uplink(self.protocol)
-                nsent= self.protocol.send(data)
-                return len(data[nsent: ])
+        while data >= 1:
+                yield Uplink(self.protocol.send(data, flags)).send
+                if data == string:
+                    data=0
+                elif data is list: 
+                    data.pop
                 pass
-    def receive(self):
-        yield Downlink(self.protocol)
-        yield self.protocl.recv(length)
+    def receive(self,length, flag):
+        yield Downlink(self.protocol.recvfrom(bufsize=length, flag)).read
         pass
     def close(self):
         yield self.protocol.close()
@@ -88,16 +66,12 @@ class Base(declarative_base):
         self.meta= MetaData(bind=self.engine)
         self.arrange=registry()
 
-
-
 class UserDatabase(Base):
 
     super(Base)__init__()
     def interpolate():
-
         pass 
-    def big_data_search():
-        pass
+    
 
     
 

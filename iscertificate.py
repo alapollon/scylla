@@ -16,17 +16,21 @@ try:
                 self.stats['value']=True 
                 self.stats['category']="pem"
                 self.stats['identity']=certficate.serial_number
-        except ValueError:
-            pass
-        
+                return self.stats
+        except ValueError, fileNotFoundError:
+            if ValueError:
+                pass
+            else:
         try: 
             certificate=x509.load_der_x509_certificate(signature)
             if certificate:
                     self.stats['value']=True
                     self.stats['category']="der"
-        except ValueError:
-            pass 
-        return False
-except ( fileNotFoundError, Exception):
-    return False
+                    self.stats['identity']=str(certificate)
+                    return self.stats
+        except ValueError, fileNotFoundError:
+            if ValueError:
+                return False
+except Exception as e:
+
 
