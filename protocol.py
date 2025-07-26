@@ -1,10 +1,15 @@
-from scapy.all import * 
-import re, hashlib, ftplib, multiprocessing, _multibytecodec, functools 
-
+import collections, re, hashlib, ftplib, multiprocessing, _multibytecodec, functools 
+from scapy import *
 
 def duplicate(packet):
     pass
 
+def decode_icmp(packet):
+    pass
+
+def decode_dhcp(packet):
+    ip=packet[IP].src
+    pass
 
 def decode_sftp(packet):
     parts=
@@ -17,7 +22,7 @@ def decode_sftp(packet):
         data={raw}
         if user & password :
             if parts > 1: 
-                pass 
+                
             else :
                 return data, user, password, target, mac
         else !user:
@@ -31,10 +36,12 @@ def decode_sftp(packet):
                 pass
 
 
-def decode_sshp():
-
+def decode_sshp(packet):
     pass 
 
-def decode_ssl():
+def decode_ssl(packet):
     pass 
 
+def decode_dns(packet):
+    
+    pass

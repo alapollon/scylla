@@ -1,15 +1,13 @@
 #
 
-import collections, server, ssl , time, threading, asyncio, pysftp, getpass, os, pathlib, logging, sys, atexit, netfilterqueqe, string, argsparse
+import collections, context, server, ssl , time, asyncio, pysftp, getpass, os, pathlib, logging, sys, atexit, netfilterqueqe, string, argsparse
 from sqlalchemy import Column, Integer, String, MetaData, Table, Select
 from pandas import DataFrame, MultiIndex, Series
 from sqlalchemy.orm.decl_api import DeclarativeMeta 
 from server import Base, Database
 import contextlib 
-import numpy as npy
 import asyncio as sync 
-import argparse
-import string
+import argparse, exprn, ip
 import ip 
 
 logging.basicConfig(
@@ -17,155 +15,57 @@ logging.basicConfig(
     format='(%(Appname)s %(threadName)-10s) %(message)s',
     filename="sycllanetwork.log"
 )
-
-PATH = (
-    Volumes= 'volumes/*',
-    Interface= '/dev/d*',
-    Cache= '/tmp',
-    Keys= '~/.ssh/*',
-    Log= '/var/log/scylla/*')
-
-async def symbol():
-    def __init__(self):
-        with PATH as path:
-            for i in path:
-                os.path.add_arguemnt(i)
-    pass 
-
 t=threading.Event()
-sql=sqlite3
 register=atexit.register()
-array=npy.array()
 df=DataFrame
 series=Series
 mi= MultiIndex
 
-def query_statement():
-    pass 
-query=query_statement
-class Main_Gateway_Scheme(Base):
-    __tablename__= "main_gateway__scheme"
-    mac_uuid: []= Column("uuid", unique=True, nullable=False)
-    gate_cidr= Column("gateway",primary_key=True, nullable=False)
-    gatewayipv4=Column("gateway4",primary_key=True, nullable=True)
-    hops=Column("hops", nullable=False)
-    gatewayipv6= Column("gatway6", unique= True, primary_key=True, nullable=False) 
-    gatewayname=Column("gatewayname", primary_key=False , nullable= True )
-    domain=Column("Company", unique=True, nullable=False )
 
-class Node_Edge_Scheme(Base):
-    __tablename__= "node_edge_scheme"
-    mac_uuid: Mapped[]=Column("uuid",primary_key=True)
-    mac=Column("mac",primary_key=True)
-    hops=Column("hops")
-    cidr=Column("cidr",foreign_key=True,nullable=False)
-    services=Column("open_services",nullable=False)
-    port=Column("port",nullable=True)
-    gateway: Mapped[]=Column("gatewayipv6",Binary(16),foreign_key_key=True, nullable= False)
-    ifgateway=Column("isgateway", primary_key=True, nullable=False)
-    bgp=Column()
-
-class Port_Services(Base):
-    __tablename__= "service_map_relationship"
-    device_uuid: Mapped []=Column("uuid",Binary(), primary_key=True)
-    gateway=Column("gateway",primary_key=True)
-    services=Column("array", nullable=False)
-    nodes: Mapped[]=Column("edges", nullable=False)
-    hostipv6=Column("hostipv6",primary_key=True, nullable=False)
-class Kansas_Cinncinati__Schema(Base):
-    __tablename__="kansas_cincinnati__scheme"
-    uuid: Mapped[]=Column("uuid",unique=True,primary_key=True,nullable=True)
-    hops=Column( nullable=False)
-    hostmac=Column(nullable=True)
-    hostipv6=Column()
-    gatecid=Column("cidr",Binary(), nullable=False  )
-    gateway=Column()
-    headgateway6: Mapped[]=Column(Primary_key=True, nullable=False )
-    bgp=Column("bgp",Boolean(),)
-    edges=Column("edges",Array(), nullable=False )
-    port=("map",Array(), nullable=False)
-class Route_Table_Schema(Base):
-    __tablename__="route_schemes"
-    gateway6: Mapped[]=Column( primary_key=True, nullable=False)
-    edges: Mapped[]=Column( nullable=False )
-    hosts=Column( primary_key=True, nullable=False )
-    bgp=Column()
-    hops=Column("hops", primary_key=True, nullable=False)
-
-class Dns_Table_Schema(Database):
-    __tablename__=""
-    uuid: =relationship()
-    mac: Mapped[]=Column("mac ", primary_key=True)
-    def __init__(self, *args):
-        hops, provider, isp
-        self.hops=0
-        self.service_provider=0
-        self.isp=
-class Database_Table_Schema(Database):
-    __tablename__="database_routes_schema"
-    uuid=()
-    hostipv6=Column()
-    sub=Column()
-    hostname=Column()
-    url=Column()
-    fitness=Column()
-    masks=Column()
-class Primary_Table_Schema(Database):
-    __tablename__ = "mac_table__schema"
-    @mapper_registry.as_declarative()
-    id=Column()
-    uuid=Column("uuid",primary_key=True)
-    mac=Column("mac", primary_key=True)
-    cidr=Column("cidr", nullable=True)
-    routes: []=Column("edges",  )
-    update=Column()  
-    def __init__(self):
-        pass 
-
-def init_sqlite_tables(drivename, name):
-    session=self.session
-    engine=self.engine(url.set(drivername=drivename,database=name) echo)
-    self.meta.create_all(engine)
-    if session()
-
-
-def init_new_database_tables_(*args):
+def init_new_tables_(*args):
     with self.session as session:
         session.add_all([])
         session.commit()
     pass
 
 
-class LocalDatabase(Database):
-    def __init__(self, drivename, username, password, host, port, database, query)
-        super(Database).__init__()
+def check_for_schemas():
+    session=self.session
+    engine=self.engine(url.set(drivername=drivename,database=name) echo)
+    self.meta.create_all(engine)
+    if session()
+
+
+class LocalProduct(Userdatabase):
+        super().__init__()
         pass 
      
     
-class RemoteDatabase(Database):
-    def __init__(self, drivername, username, password, host, port, database, query):
-         super(Database).__init__()
+class RemoteProduct(Userdatabase):
+         super().__init__()
         pass
-    
-class Userdatabase(LocalDatabase, RemoteDatabase):
-   def __init__(self):
-       self.user_accounts=
-class ProductDatabase(contextlib):
-    def __init__(self, api, func):
-       super(Userdatabase)
-        pass 
+
+
+class ProductDatabase():
+    def __init__(self, api):
+        super(context.AbstractAsyncContextManager).__init__():
+        pass
+
     add=
     commit= 
     search= 
 
-class IndividualFactorDistribution:
-    def __init__(self):
-        self.idf= DataFrame()
 
-class MultiFactorDistribution:
-    def __init__(self, input, column_series, *args):
-        self.mfd = Series(data=input, , columns= column_series) 
- 
+class MultiplexDistribution:
+    def __init__(self, product):
+        self.kc_map= Series(data=product, columns=[]) 
+        self.arp_table
+        pass
+    def prepare():
+        pass 
+
+    def __call__():
+        pass 
 class FrameworkData():
     def __init__(self):
 
@@ -259,10 +159,12 @@ process_spoof_thread = threading.Thread(
 )
 
 log = logging.getProcess()
-
 process = ( process_spoof_thread  )
+
 def main():
-  arp_index
+    volume= 
+    interfaces= 
+    environment_keys=
   parser.add_arguemnt('end', action=, default=False)
   parser.add_arguemnt('start', action=, default=True)
   parser.addd_arguement('get', action=, default=False)

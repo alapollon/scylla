@@ -1,9 +1,12 @@
-import nmap, ip, hpc, sqlite3, ssl, socket, collections, socketserver, threading, netfilterqueqe, contextlib
+import protocol, ip, hpc, sqlite3, pysftp, ssl, socket, collections, socketserver, threading, netfilterqueqe, contextlib
 from sqlalchemy.orm import declarative_base
+from collections import namedtuple, defaultDict
 
-
-protocol=socket
+access=sockect
+dserver=socketserver
 context=contextlib
+interfaces_address={}
+
 
 class Downlink():
     def __init__(self,func):
@@ -19,66 +22,56 @@ class Uplink():
         sched.writewait(task,fileno)
         
 class Coroutine(object):
-    def __init__(self,switch,secure_layer):
-        self.protocol=switch
-        self.security=secure_layer
-        self.secure_protocol=None
+    def __init__(self, switch, secure=False):
+        self.switch=switch
+        self.secure=secure
         self.edge_weights=[None]
         pass
-    def connect(self,addr):
+    def connect(self, target):
         if self.secure:
-            secure_socket=self.secure_protocol=ssl.wrap(self.protocol, server_side= True, certfile=self.security)
+            secure_socket=Security.wrap_socket(self.switch, server_side= True)
             yield Uplink(secure_socket)
         else: 
             yield Uplink(self.protocol)
         yield self.protocol.connect(addr)
     def accept(self):
-        yield Downlink(self.protocol)
+        yield Downlink(self.switch)
         if self.secure:
-            data=self.secure_protocol.read()
+            try:
+                data=self.secure_socket.read()
+            except:
         else:
             conn, addr = self.protocol.accept()
             pass 
 
     def send(self, data):
-        while data:
-                yield Uplink(self.protocol)
-                nsent= self.protocol.send(data)
-                return len(data[nsent: ])
+        while data >= 1:
+                yield Uplink(self.protocol.send(data, flags)).send
+                if data == string:
+                    data=0
+                elif data is list: 
+                    data.pop
                 pass
-    def datagram_receive(self, length):
-        yield Downlink(self.protocol)
-        yield self.protocl.recv(length)
+    def receive(self,length, flag):
+        yield Downlink(self.protocol.recvfrom(bufsize=length, flag)).read
         pass
     def close(self):
         yield self.protocol.close()
         pass
-class Base(declarative_base):
 
+class Base(declarative_base):
     def __init__(self):
-        super(context.AbstractAsyncContextManager).__init__()
         self.engine= create_engine
-        self.orm= sessionmaker(bind=self.engine)
         self.session=Session
         self.meta= MetaData(bind=self.engine)
         self.arrange=registry()
 
+class UserDatabase(Base):
 
-class Database(Base):
-    def __init__(self,  secure_socket_layer_certificate):
-        super(Base).__init__(self, )
-        if :
-            self.switch=protocol()
-        elif
-            self.switch=Coroutine(protocol())
-        else: 
-            raise 
-    def call_forward(self,**kwargs):
-        with self.session as session:
-            pass
+    super(Base)__init__()
+    def interpolate():
+        pass 
+    
 
-    def initialize(self, api):
-        self.engine(api)
-        pass
-
+    
 
