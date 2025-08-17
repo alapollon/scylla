@@ -1,4 +1,4 @@
-import protocol, ip, hpc, sqlite3, pysftp, ssl, socket, collections, socketserver, threading, netfilterqueqe, contextlib
+import protocol, ip, Sequrity, pysftp, ssl, socket, collections, socketserver, threading, contextlib
 from sqlalchemy.orm import declarative_base
 from collections import namedtuple, defaultDict
 
@@ -60,17 +60,16 @@ class Coroutine(object):
         pass
 
 class Base(declarative_base):
-    def __init__(self):
-        self.engine= create_engine
+    def __init__(self, api):
+        self.engine= create_engine(api)
         self.session=Session
         self.meta= MetaData(bind=self.engine)
         self.arrange=registry()
 
 class UserDatabase(Base):
-
-    super(Base)__init__()
-    def interpolate():
-        pass 
+    def __init__(self, api):
+        super(Base)__init__(api)
+        pass
     
 
     
