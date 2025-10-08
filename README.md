@@ -1,6 +1,4 @@
-# Scylla Prototype lite
-
-#### The Scylla Application 
+# The Scylla V1 
 
 #### Purpose 
 
